@@ -7,6 +7,8 @@ use ScolariteBundle\Entity\CategorieLieu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use ScolariteBundle\Form\AdresseUtileSearchType;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Adresseutile controller.
@@ -27,6 +29,23 @@ class AdresseUtileController extends Controller
         return $this->render('adresseutile/index.html.twig', array(
             'adresseUtiles' => $adresseUtiles,
         ));
+    }
+
+    public function indexJsonAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $adresseUtiles = $em->getRepository('ScolariteBundle:AdresseUtile')->findAll();
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(1);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer=new Serializer([ $normalizer]);
+        $formatted=$serializer->normalize($adresseUtiles);
+        return $this->json($formatted);
+
     }
 
     public function mapAction()

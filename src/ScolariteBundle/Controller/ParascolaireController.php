@@ -6,6 +6,8 @@ use ScolariteBundle\Entity\Parascolaire;
 use ScolariteBundle\Form\ParascolaireSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Parascolaire controller.
@@ -26,6 +28,22 @@ class ParascolaireController extends Controller
         return $this->render('parascolaire/index.html.twig', array(
             'parascolaires' => $parascolaires,
         ));
+    }
+
+    public function indexJsonAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $parascolaires = $em->getRepository('ScolariteBundle:Parascolaire')->findAll();
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(1);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer=new Serializer([ $normalizer]);
+        $formatted=$serializer->normalize($parascolaires);
+        return $this->json($formatted);
     }
 
     /**
