@@ -25,7 +25,7 @@
                 <tbody>
                 {% for anneeScolaire in anneeScolaires %}
                     <tr>
-                        <td><a href="{{ path('anneescolaire_show', { 'id': anneeScolaire.id }) }}">{{ anneeScolaire.id }}</a></td>
+                        <td>{{ anneeScolaire.id }}</td>
                         <td>{{ anneeScolaire.libelle }}</td>
                         <td>
                             <ul>
