@@ -1,0 +1,24 @@
+anneescolaire_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:AnneeScolaire:index" }
+    methods:  GET
+
+anneescolaire_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:AnneeScolaire:show" }
+    methods:  GET
+
+anneescolaire_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:AnneeScolaire:new" }
+    methods:  [GET, POST]
+
+anneescolaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:AnneeScolaire:edit" }
+    methods:  [GET, POST]
+
+anneescolaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:AnneeScolaire:delete" }
+    methods:  DELETE

@@ -1,0 +1,61 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Adresses utiles
+                <small>recherche</small>
+            </h2>
+            <ul class="nav navbar-right ">
+                <li>
+                    <a href="{{ path('adresseutile_new') }}">Ajouter une adresse utile</a>
+                </li>
+            </ul>
+            <div align="center">
+                <form action="search" method="post">
+                    {{ form_start(form) }}
+                    {{ form_widget(form.categorie, {
+                        'attr': {'class':'dropdown-toggle'}
+                    }) }}
+                    <input class="btn btn-primary" type="submit" value="Rechercher"/>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Adresse</th>
+                    <th>Tel</th>
+                    <th>Siteweb</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for adresse in AdresseUtiles %}
+                    <tr>
+                        <td><a href="{{ path('adresseutile_show', { 'id': adresse.id }) }}">{{ adresse.id }}</a></td>
+                        <td>{{ adresse.nom }}</td>
+                        <td>{{ adresse.description }}</td>
+                        <td>{{ adresse.adresse }}</td>
+                        <td>{{ adresse.tel }}</td>
+                        <td>{{ adresse.siteWeb }}</td>
+                        <td>
+                            <a href="{{ path('adresseutile_edit', { 'id': adresse.id }) }}">modifier/supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

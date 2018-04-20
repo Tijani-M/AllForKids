@@ -1,0 +1,46 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Catégories d'addresses utiles<small>liste complète</small></h2>
+            <ul class="nav navbar-right ">
+                <li>
+                    <a href="{{ path('categorielieu_new') }}">Ajouter une catégorie d'addresses utiles</a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for categorieLieu in categorieLieus %}
+                    <tr>
+                        <td>{{ categorieLieu.id }}</td>
+                        <td>{{ categorieLieu.nom }}</td>
+                        <td>
+                            <ul>
+
+                                <li>
+                                    <a href="{{ path('categorielieu_edit', { 'id': categorieLieu.id }) }}">modifier/supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

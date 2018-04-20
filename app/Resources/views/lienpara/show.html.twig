@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lienpara</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ lienPara.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ lienPara.description }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ lienPara.url }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lienpara_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('lienpara_edit', { 'id': lienPara.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

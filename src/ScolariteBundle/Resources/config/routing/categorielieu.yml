@@ -1,0 +1,24 @@
+categorielieu_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:CategorieLieu:index" }
+    methods:  GET
+
+categorielieu_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:CategorieLieu:show" }
+    methods:  GET
+
+categorielieu_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:CategorieLieu:new" }
+    methods:  [GET, POST]
+
+categorielieu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:CategorieLieu:edit" }
+    methods:  [GET, POST]
+
+categorielieu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:CategorieLieu:delete" }
+    methods:  DELETE

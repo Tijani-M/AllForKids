@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lienparas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lienPara in lienParas %}
+            <tr>
+                <td><a href="{{ path('lienpara_show', { 'id': lienPara.id }) }}">{{ lienPara.id }}</a></td>
+                <td>{{ lienPara.description }}</td>
+                <td>{{ lienPara.url }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('lienpara_show', { 'id': lienPara.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('lienpara_edit', { 'id': lienPara.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lienpara_new') }}">Create a new lienPara</a>
+        </li>
+    </ul>
+{% endblock %}

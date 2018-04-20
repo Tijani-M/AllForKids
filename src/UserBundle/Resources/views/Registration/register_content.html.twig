@@ -1,0 +1,70 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<html>
+<head>
+    <title>All For Kids | Créer un compte</title>
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css') }}"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css') }}"
+          rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css') }}" rel="stylesheet">
+    <style>
+        #test {
+            width: 50%;
+            margin: auto;
+            margin-top: 10%;
+
+        }
+    </style>
+</head>
+
+<body>
+<!-- page content -->
+<div class="row" id="test">
+    <div class="x_panel">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register form-horizontal form-label-left'}}) }}
+        <span class="section">Créer un compte</span>
+
+        <div class="item form-group">
+            {{ form_label(form.username, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.username, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+            }) }}
+        </div>
+        <div class="item form-group">
+            {{ form_label(form.email, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.email, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+            }) }}
+        </div>
+
+        {% for passwordField in form.plainPassword %}
+            <div class="item form-group">
+                {{ form_label(passwordField, null, {
+                    'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+                }) }}
+                {{ form_widget(passwordField, {
+                    'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+                }) }}
+            </div>
+        {% endfor %}
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}"/>
+                <button type="submit" class="btn btn-primary">Cancel</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+<!-- /page content -->
+</body>
+
+</html>

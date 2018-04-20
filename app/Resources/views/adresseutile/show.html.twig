@@ -1,0 +1,122 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="x_title">
+        <h2>{{ adresseUtile.nom }}</h2>
+        <ul class="nav navbar-right ">
+                <a href="{{ path('imagelieu_newFromAdresse', { 'idAdresse': adresseUtile.id }) }}">Ajouter une image </a>|
+            <a href="{{ path('adresseutile_index') }}">Retour à la liste</a>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div id="tableau" class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+
+            <div class="clearfix"></div>
+            <div class="x_content">
+
+                <table class="table">
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{{ adresseUtile.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ adresseUtile.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ adresseUtile.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Adresse</th>
+                        <td>{{ adresseUtile.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tel</th>
+                        <td>{{ adresseUtile.tel }}</td>
+                    </tr>
+                    <tr>
+                        <th>Siteweb</th>
+                        <td>{{ adresseUtile.siteWeb }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gps</th>
+                        <td>{{ adresseUtile.gps }}</td>
+                    </tr>
+                    <tr>
+                        <th>Valide</th>
+
+                        <td>{% if adresseUtile.valide %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Dateajout</th>
+                        <td>{% if adresseUtile.dateAjout %}{{ adresseUtile.dateAjout|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Datevalidation</th>
+                        <td>{% if adresseUtile.dateValidation %}{{ adresseUtile.dateValidation|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="map" class="col-md-6 col-sm-6 col-xs-12">
+
+    </div>
+<div class="x_content">
+    {% for ImageLieu in adresseUtile.imageLieu %}
+        <div class="col-md-55">
+            <div class="thumbnail">
+                <div class="image view view-first">
+                    <img style="width: 100%; display: block;"
+                         src="{{ asset('images/adresses/') }}{{ ImageLieu.imageName }}" alt="image">
+                    <div class="mask no-caption">
+                        <div class="tools tools-bottom">
+                            <a href="{{ asset('images/adresses/') }}{{ ImageLieu.imageName }}"><i class="fa fa-link"></i></a>
+                            <a href="{{ path('imagelieu_edit', { 'id': ImageLieu.id }) }}"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ path('imagelieu_deleteFromAdresse', { 'id': ImageLieu.id  , 'idAdresse': adresseUtile.id }) }}"><i class="fa fa-times"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p>
+                        <strong><a href="{{ path('adresseutile_show', { 'id': ImageLieu.adresseUtile.id }) }}">{{ ImageLieu.adresseUtile.nom }}</a></strong>
+                    </p>
+                    <p>{{ ImageLieu.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        function myMap() {
+            var myCenter = new google.maps.LatLng({{ adresseUtile.gps }});
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {center: myCenter, zoom: 9};
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+            var marker = new google.maps.Marker({position: myCenter});
+            marker.setMap(map);
+
+            // Zoom to 9 when clicking on marker
+            google.maps.event.addListener(marker, 'click', function () {
+                map.setZoom(16);
+                map.setCenter(marker.getPosition());
+            });
+        }
+
+        $(document).ready(function () {
+            var $tableContainer = $('div#tableau');
+            var $mapContainer = $('div#map');
+            $mapContainer.height($tableContainer.height() - 10);
+
+        });
+
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA05SEH4coDJXkud9GF2qhrn1ee750_jz0&callback=myMap"></script>
+{% endblock %}

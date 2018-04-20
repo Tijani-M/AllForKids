@@ -1,0 +1,46 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Années scolaires<small>liste complète</small></h2>
+            <ul class="nav navbar-right ">
+                <li>
+                    <a href="{{ path('anneescolaire_new') }}">Ajouter une année scolaire</a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Libellé</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for anneeScolaire in anneeScolaires %}
+                    <tr>
+                        <td><a href="{{ path('anneescolaire_show', { 'id': anneeScolaire.id }) }}">{{ anneeScolaire.id }}</a></td>
+                        <td>{{ anneeScolaire.libelle }}</td>
+                        <td>
+                            <ul>
+
+                                <li>
+                                    <a href="{{ path('anneescolaire_edit', { 'id': anneeScolaire.id }) }}">modifier/supprimer</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

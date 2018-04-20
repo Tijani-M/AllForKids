@@ -1,0 +1,34 @@
+lienpara_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:LienPara:index" }
+    methods:  GET
+
+lienpara_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:LienPara:show" }
+    methods:  GET
+
+lienpara_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:LienPara:new" }
+    methods:  [GET, POST]
+
+lienpara_newFromPara:
+    path:     /newFromPara
+    defaults: { _controller: "ScolariteBundle:LienPara:newFromPara" }
+    methods:  [GET, POST]
+
+lienpara_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:LienPara:edit" }
+    methods:  [GET, POST]
+
+lienpara_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:LienPara:delete" }
+    methods:  DELETE
+
+lienpara_deleteFromPara:
+    path:     /deleteFromPara
+    defaults: { _controller: "ScolariteBundle:LienPara:deleteFromPara" }
+    methods:  GET

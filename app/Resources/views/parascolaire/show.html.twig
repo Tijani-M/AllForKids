@@ -1,0 +1,94 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="x_title">
+        <h2>{{ parascolaire.titre }}</h2>
+        <ul class="nav navbar-right ">
+            <a href="{{ path('lienpara_newFromPara', { 'idPara': parascolaire.id }) }}">Ajouter un lien externe </a>|
+            <a href="{{ path('parascolaire_index') }}">Retour à la liste</a>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+
+            <div class="clearfix"></div>
+            <div class="x_content">
+
+                <table class="table">
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">Id</th>
+                        <td>{{ parascolaire.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ parascolaire.titre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ parascolaire.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Téléchargement</th>
+                        <td><a href="{{ asset('images/parascolaires/') }}{{ parascolaire.fileName }}">Télécharger</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Valide</th>
+
+                        <td>{% if parascolaire.valide %}Oui{% else %}Non{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date d'ajoût</th>
+                        <td>{% if parascolaire.dateAjout %}{{ parascolaire.dateAjout|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de validation</th>
+                        <td>{% if parascolaire.dateValidation %}{{ parascolaire.dateValidation|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="x_panel">
+            <div class="clearfix"></div>
+            <div class="x_content">
+                <h2>Liens externes</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Description</th>
+                        <th>Lien</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for lienExterne in parascolaire.lienExterne %}
+                        <tr>
+                            <td>{{ lienExterne.id }}</td>
+                            <td>{{ lienExterne.description }}</td>
+                            <td><a href="{{ lienExterne.url }}">{{ lienExterne.url }}</a></td>
+                            <td>
+                                <a href="{{ lienExterne.url }}"><i class="fa fa-link"></i></a>
+                                <a href="{{ path('lienpara_edit', { 'id': lienExterne.id }) }}"><i
+                                            class="fa fa-pencil"></i></a>
+                                <a href="{{ path('lienpara_deleteFromPara', { 'id': lienExterne.id  , 'idPara': parascolaire.id }) }}"><i
+                                            class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>All For Kids | Créer un compte</title>
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css') }}"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css') }}"
+          rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css') }}" rel="stylesheet">
+    <style>
+        #test {
+            width: 50%;
+            margin: auto;
+            margin-top: 10%;
+
+        }
+    </style>
+</head>
+<body>
+<!-- page content -->
+<div class="row" id="test">
+    <div class="x_panel">
+        <div>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                <a href="{{ path('fos_user_security_logout') }}">
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            {% else %}
+                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            {% endif %}
+        </div>
+        <div class="ln_solid"></div>
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+    </div>
+</div>
+<!-- page content -->
+</body>
+</html>

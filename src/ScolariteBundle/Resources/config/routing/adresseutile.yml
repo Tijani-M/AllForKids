@@ -1,0 +1,34 @@
+adresseutile_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:index" }
+    methods:  GET
+
+adresseutile_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:show" }
+    methods:  GET
+
+adresseutile_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:new" }
+    methods:  [GET, POST]
+
+adresseutile_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:edit" }
+    methods:  [GET, POST]
+
+adresseutile_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:delete" }
+    methods:  DELETE
+
+adresseutile_search:
+    path:     /search
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:search" }
+    methods:  [GET, POST]
+
+adresseutile_map:
+    path:     /map
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:map" }
+    methods:  GET

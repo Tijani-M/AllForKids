@@ -1,0 +1,35 @@
+scolarite_parascolaire:
+    resource: "@ScolariteBundle/Resources/config/routing/parascolaire.yml"
+    prefix:   /parascolaire
+
+scolarite_adresseutile:
+    resource: "@ScolariteBundle/Resources/config/routing/adresseutile.yml"
+    prefix:   /adresseutile
+
+scolarite_lienpara:
+    resource: "@ScolariteBundle/Resources/config/routing/lienpara.yml"
+    prefix:   /lienpara
+
+scolarite_imagelieu:
+    resource: "@ScolariteBundle/Resources/config/routing/imagelieu.yml"
+    prefix:   /imagelieu
+
+scolarite_categorielieu:
+    resource: "@ScolariteBundle/Resources/config/routing/categorielieu.yml"
+    prefix:   /categorielieu
+
+scolarite_typepara:
+    resource: "@ScolariteBundle/Resources/config/routing/typepara.yml"
+    prefix:   /typepara
+
+scolarite_matiere:
+    resource: "@ScolariteBundle/Resources/config/routing/matiere.yml"
+    prefix:   /matiere
+
+scolarite_anneescolaire:
+    resource: "@ScolariteBundle/Resources/config/routing/anneescolaire.yml"
+    prefix:   /anneescolaire
+
+scolarite_homepage:
+    path:     /
+    defaults: { _controller: ScolariteBundle:Default:index }

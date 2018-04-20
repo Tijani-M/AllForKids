@@ -1,0 +1,29 @@
+parascolaire_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:Parascolaire:index" }
+    methods:  GET
+
+parascolaire_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:Parascolaire:show" }
+    methods:  GET
+
+parascolaire_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:Parascolaire:new" }
+    methods:  [GET, POST]
+
+parascolaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:Parascolaire:edit" }
+    methods:  [GET, POST]
+
+parascolaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:Parascolaire:delete" }
+    methods:  DELETE
+
+parascolaire_search:
+    path:     /search
+    defaults: { _controller: "ScolariteBundle:Parascolaire:search" }
+    methods:  [GET, POST]

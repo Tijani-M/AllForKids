@@ -1,0 +1,36 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Matières
+                <small>ajoût</small>
+            </h2>
+            <ul class="nav navbar-right ">
+                <li>
+                    <a href="{{ path('matiere_index') }}">Retour à la liste</a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+            <table class="table">
+                <tr>
+                    {{ form_start(form) }}
+                    <td>
+                        {{ form_row(form.anneeScolaire) }}
+                    </td>
+                    <td>
+                        {{ form_row(form.libelle) }}
+                    </td>
+
+                    <td>
+                        <input class="btn btn-primary" type="submit" value="Enregister"/>
+                        {{ form_end(form) }}
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endblock %}

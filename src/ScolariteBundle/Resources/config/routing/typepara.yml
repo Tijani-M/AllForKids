@@ -1,0 +1,24 @@
+typepara_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:TypePara:index" }
+    methods:  GET
+
+typepara_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:TypePara:show" }
+    methods:  GET
+
+typepara_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:TypePara:new" }
+    methods:  [GET, POST]
+
+typepara_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:TypePara:edit" }
+    methods:  [GET, POST]
+
+typepara_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:TypePara:delete" }
+    methods:  DELETE

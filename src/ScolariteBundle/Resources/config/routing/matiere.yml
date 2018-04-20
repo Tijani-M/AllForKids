@@ -1,0 +1,24 @@
+matiere_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:Matiere:index" }
+    methods:  GET
+
+matiere_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:Matiere:show" }
+    methods:  GET
+
+matiere_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:Matiere:new" }
+    methods:  [GET, POST]
+
+matiere_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:Matiere:edit" }
+    methods:  [GET, POST]
+
+matiere_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:Matiere:delete" }
+    methods:  DELETE

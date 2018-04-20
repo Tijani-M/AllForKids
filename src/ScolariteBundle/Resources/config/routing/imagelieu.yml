@@ -1,0 +1,34 @@
+imagelieu_index:
+    path:     /
+    defaults: { _controller: "ScolariteBundle:ImageLieu:index" }
+    methods:  GET
+
+imagelieu_show:
+    path:     /{id}/show
+    defaults: { _controller: "ScolariteBundle:ImageLieu:show" }
+    methods:  GET
+
+imagelieu_new:
+    path:     /new
+    defaults: { _controller: "ScolariteBundle:ImageLieu:new" }
+    methods:  [GET, POST]
+
+imagelieu_newFromAdresse:
+    path:     /newFromAdresse
+    defaults: { _controller: "ScolariteBundle:ImageLieu:newFromAdresse" }
+    methods:  [GET, POST]
+
+imagelieu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ScolariteBundle:ImageLieu:edit" }
+    methods:  [GET, POST]
+
+imagelieu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ScolariteBundle:ImageLieu:delete" }
+    methods:  DELETE
+
+imagelieu_deleteFromAdresse:
+    path:     /deleteFromAdresse
+    defaults: { _controller: "ScolariteBundle:ImageLieu:deleteFromAdresse" }
+    methods:  GET
