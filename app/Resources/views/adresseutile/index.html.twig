@@ -36,7 +36,7 @@
                         <td>{{ adresse.description }}</td>
                         <td>{{ adresse.adresse }}</td>
                         <td>{{ adresse.tel }}</td>
-                        <td>{{ adresse.siteWeb }}</td>
+                        <td><a href="{{ adresse.siteWeb }}">{{ adresse.siteWeb }}</a></td>
                         <td>
                             <a href="{{ path('adresseutile_edit', { 'id': adresse.id }) }}">modifier/supprimer</a>
                         </td>

@@ -76,13 +76,24 @@
                             </li>
                             <li><a><i class="fa fa-edit"></i> Scolarité <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{ path('anneescolaire_index') }}">Années Scolaires</a></li>
-                                    <li><a href="{{ path('matiere_index') }}">Matières</a></li>
-                                    <li><a href="{{ path('typepara_index') }}">Types de contenu</a></li>
-                                    <li><a href="{{ path('parascolaire_index') }}">PARASCOLAIRES</a></li>
-                                    <li><a href="{{ path('categorielieu_index') }}">Catégiries d'adresses</a></li>
-                                    <li><a href="{{ path('adresseutile_index') }}">ADRESSES UTILES</a></li>
-                                    <li><a href="{{ path('adresseutile_map') }}">Carte des adresses utiles</a></li>
+                                    <li><a>Parascolaires<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('anneescolaire_index') }}">Années Scolaires</a></li>
+                                            <li><a href="{{ path('matiere_index') }}">Matières</a></li>
+                                            <li><a href="{{ path('typepara_index') }}">Types de contenu</a></li>
+                                            <li><a href="{{ path('parascolaire_index') }}">Liste complète</a></li>
+                                            <li><a href="{{ path('parascolaire_search') }}">Recherche</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Adresses utiles<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('categorielieu_index') }}">Catégiries</a></li>
+                                            <li><a href="{{ path('adresseutile_index') }}">Liste complète</a></li>
+                                            <li><a href="{{ path('adresseutile_search') }}">Recherche</a></li>
+                                            <li><a href="{{ path('imagelieu_index') }}">Galerie des images</a></li>
+                                            <li><a href="{{ path('adresseutile_map') }}">Carte des adresses utiles</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                             <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
