@@ -4309,7 +4309,7 @@
 
 			setMonthsAndYears(orient, startDate, endDate, this);
 			adjustForDST(orient, startDate, endDate);
-			// // TODO - adjust for DST
+
 			var diff = endDate - startDate;
 			if (diff !== 0) {
 				var ts = new TimeSpan(diff);
