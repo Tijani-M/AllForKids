@@ -43,20 +43,52 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                    <!-- Hafedh K. Debut Modif-->
+
+                    {#<a href="{{ path('sante_homepage') }}"  class="site_title">#}
+                        <img src="{{ asset('images/logo/Logo1.png') }} "  height="80"></a>
+
+                    {#<a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}" class="site_title"><i class="fa fa-paw"></i> <span>All For Kids</span></a>#}
+
+                    <!-- Hafedh K. Fin Modif-->
                 </div>
 
                 <div class="clearfix"></div>
 
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
-                    <div class="profile_pic">
-                        <img src="{{ asset('bundles/dashboard/gentelella/images/img.jpg') }}" alt="..." class="img-circle profile_img">
-                    </div>
-                    <div class="profile_info">
-                        <span>Welcome,</span>
-                        <h2>{{ app.user.username }}</h2>
-                    </div>
+                    <!-- Hafedh K. : Début Modification-->
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <div class="profile_pic">
+                            <img src="{{ asset('images/users/img.jpg') }}" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <!--<span>Welcome,</span>-->
+                            <span>Bienvenue,</span>
+                            <h2>
+                                {{ app.user.username  }}
+                                <a href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </h2>
+                        </div>
+                            {% else %}
+                                <div class="profile_pic">
+                                    <img src="{{ asset('images/users/user.png') }}" alt="..." class="img-circle profile_img">
+                                </div>
+                        <div class="profile_info">
+                            <!--<span>Welcome,</span>-->
+                            <span>Veuillez se connecter,</span>
+                            <h2>
+                                <a href="{{ path('fos_user_security_login') }}">
+                                    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </h2>
+                        </div>
+                            {% endif %}
+                            <!--John Doe-->
+                            <!-- Hafedh K. : Fin Modification-->
+
                 </div>
                 <!-- /menu profile quick info -->
 
@@ -217,9 +249,19 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('bundles/dashboard/gentelella/images/img.jpg') }}" alt="">{{ app.user.username }}
-                                <span class=" fa fa-angle-down"></span>
+                            <!-- Hafedh K. : Début Modification-->
+                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('bundles/dashboard/gentelella/images/img.jpg') }}" alt="">
+                                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+                            {% else %}
+                                <a href="{{ path('fos_user_security_login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true">
+                                    {{ 'layout.login'|trans({}, 'FOSUserBundle')  }} </a>
+                            {% endif %}
+                            <!--John Doe-->
+                            <!-- Hafedh K. : Fin Modification-->
+
+
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="javascript:;"> Profile</a></li>
@@ -230,11 +272,17 @@
                                     </a>
                                 </li>
                                 <li><a href="javascript:;">Help</a></li>
-                                <li><a href="{{ asset('bundles/dashboard/gentelella/login.html') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="{{ asset('bundles/dashboard/gentelella/login.html') }}"><i class="fa fa-sign-out pull-right"></i>
+                                        <!-- Hafedh K. : Début Modification-->
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        </a>
+                                        Log Out</a></li>
+                                        <!-- Hafedh K. : Fin Modification-->
                             </ul>
                         </li>
-
-                        <li role="presentation" class="dropdown">
+                        <!-- Hafedh K. : début Modification-->
+                        {#<li role="presentation" class="dropdown">
                             <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                 <i class="fa fa-envelope-o"></i>
                                 <span class="badge bg-green">6</span>
@@ -297,7 +345,8 @@
                                     </div>
                                 </li>
                             </ul>
-                        </li>
+                        </li>#}
+                        <!-- Hafedh K. : Fin Modification-->
                     </ul>
                 </nav>
             </div>
@@ -321,7 +370,11 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                All For Kids
+                <!--Hafedh K. :  Début-->
+                    <strong> Administration - All For Kids </strong>
+                    {#<a href="{{ path('sante_homepage') }}">#}
+                    <img src="{{ asset('images/logo/Logo1.png') }} "  height="50"></a>
+                <!--Hafedh K. :  Fin-->
             </div>
             <div class="clearfix"></div>
         </footer>
