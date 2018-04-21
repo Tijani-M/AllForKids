@@ -237,7 +237,6 @@ var prettyPrint;
   // expression immediately follows another since a regular expression may
   // have flags for case-sensitivity and the like.  Having regexp tokens
   // adjacent is not valid in any language I'm aware of, so I'm punting.
-  // TODO: maybe style special characters inside a regexp as punctuation.
 
   /**
    * Given a group of {@link RegExp}s, returns a {@code RegExp} that globally
@@ -455,7 +454,6 @@ var prettyPrint;
           if (p.length >= 2 && ch0 === '[') {
             parts[i] = caseFoldCharset(p);
           } else if (ch0 !== '\\') {
-            // TODO: handle letters in numeric escapes.
             parts[i] = p.replace(
                 /[a-zA-Z]/g,
                 function (ch) {
@@ -554,7 +552,6 @@ var prettyPrint;
           } else {
             text = text.replace(/\r\n?/g, '\n');  // Normalize newlines.
           }
-          // TODO: handle tabs here?
           chunks[k] = text;
           spans[k << 1] = length;
           length += text.length;
@@ -944,7 +941,6 @@ var prettyPrint;
     }
 
     fallthroughStylePatterns.push(
-        // TODO(mikesamuel): recognize non-latin letters and numerals in idents
         [PR_LITERAL,     /^@[a-z_$][a-z_$@0-9]*/i, null],
         [PR_TYPE,        /^(?:[@_]?[A-Z]+[a-z][A-Za-z_$@0-9]*|\w+_t\b)/, null],
         [PR_PLAIN,       /^[a-z_$][a-z_$@0-9]*/i, null],
@@ -1212,7 +1208,6 @@ var prettyPrint;
           span.appendChild(textNode);
           if (sourceIndex < spanEnd) {  // Split off a text node.
             spans[spanIndex + 1] = textNode
-                // TODO: Possibly optimize by using '' if there's no flicker.
                 = document.createTextNode(source.substring(end, spanEnd));
             parentNode.insertBefore(textNode, span.nextSibling);
           }

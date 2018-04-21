@@ -2,7 +2,6 @@
 
 {% block body %}
     <div class="x_title">
-        <h2>{{ parascolaire.titre }}</h2>
         <ul class="nav navbar-right ">
             <a href="{{ path('lienpara_newFromPara', { 'idPara': parascolaire.id }) }}">Ajouter un lien externe </a>|
             <a href="{{ path('parascolaire_index') }}">Retour à la liste</a>
@@ -14,14 +13,10 @@
 
             <div class="clearfix"></div>
             <div class="x_content">
-
+                <h2>{{ parascolaire.titre }}</h2>
                 <table class="table">
 
                     <tbody>
-                    <tr>
-                        <th scope="row">Id</th>
-                        <td>{{ parascolaire.id }}</td>
-                    </tr>
                     <tr>
                         <th>Titre</th>
                         <td>{{ parascolaire.titre }}</td>
@@ -63,7 +58,6 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Description</th>
                         <th>Lien</th>
                         <th>Actions</th>
@@ -72,7 +66,6 @@
                     <tbody>
                     {% for lienExterne in parascolaire.lienExterne %}
                         <tr>
-                            <td>{{ lienExterne.id }}</td>
                             <td>{{ lienExterne.description }}</td>
                             <td><a href="{{ lienExterne.url }}">{{ lienExterne.url }}</a></td>
                             <td>

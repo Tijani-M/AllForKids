@@ -19,10 +19,10 @@
             <table id="datatable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th></th>
                     <th>Titre</th>
                     <th>Description</th>
-                    <th>Téléchargement</th>
+                    <th>Fichier</th>
                     <th>Matière</th>
                     <th>Type</th>
                     <th>Date d'ajoût</th>
@@ -32,12 +32,14 @@
                 <tbody>
                 {% for parascolaire in parascolaires %}
                     <tr>
-                        <td>
-                            <a href="{{ path('parascolaire_show', { 'id': parascolaire.id }) }}">{{ parascolaire.id }}</a>
+                        <td align="center">
+                            <a href="{{ path('parascolaire_show', { 'id': parascolaire.id }) }}"><i class="fa fa-eye"></i></a>
                         </td>
                         <td>{{ parascolaire.titre }}</td>
                         <td>{{ parascolaire.description }}</td>
-                        <td><a href="{{ asset('images/parascolaires/') }}{{ parascolaire.fileName }}">Télécharger</a></td>
+                        <td align="center">
+                            <a href="{{ asset('images/parascolaires/') }}{{ parascolaire.fileName }}"><i class="fa fa-download"></i></a>
+                        </td>
                         <td>{{ parascolaire.matiere }}</td>
                         <td>{{ parascolaire.typePara }}</td>
                         <td>{% if parascolaire.dateAjout %}{{ parascolaire.dateAjout|date('Y-m-d') }}{% endif %}</td>
