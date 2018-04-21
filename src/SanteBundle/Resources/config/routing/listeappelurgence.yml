@@ -1,0 +1,24 @@
+listeappelurgence_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:index" }
+    methods:  GET
+
+listeappelurgence_show:
+    path:     /{idNumUrgence}/show
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:show" }
+    methods:  GET
+
+listeappelurgence_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:new" }
+    methods:  [GET, POST]
+
+listeappelurgence_edit:
+    path:     /{idNumUrgence}/edit
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:edit" }
+    methods:  [GET, POST]
+
+listeappelurgence_delete:
+    path:     /{idNumUrgence}/delete
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:delete" }
+    methods:  DELETE

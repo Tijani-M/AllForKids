@@ -1,0 +1,49 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <h1>Listeappelurgences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idnumurgence</th>
+                <th>Libellenumurgence</th>
+                <th>Numurgence</th>
+                <th>Image</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for listeAppelUrgence in listeAppelUrgences %}
+            <tr>
+                <td><a href="{{ path('listeappelurgence_show', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">{{ listeAppelUrgence.idNumUrgence }}</a></td>
+                <td>{{ listeAppelUrgence.libelleNumUrgence }}</td>
+                <td>{{ listeAppelUrgence.NumUrgence }}</td>
+
+                <td><img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}"  height="60"></td>
+
+                {#<img src="{{ vich_uploader_asset(listeAppelUrgence, 'imageFile') }}" alt="{{ listeAppelUrgence.image }}" height="2000"/>#}
+
+                <td>{% if listeAppelUrgence.updatedAt %}{{ listeAppelUrgence.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('listeappelurgence_show', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('listeappelurgence_edit', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('listeappelurgence_new') }}">Create a new listeAppelUrgence</a>
+        </li>
+    </ul>
+{% endblock %}

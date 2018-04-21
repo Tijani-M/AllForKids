@@ -1,0 +1,44 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <h1>Convention</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idconv</th>
+                <td>{{ convention.idConv }}</td>
+            </tr>
+            <tr>
+                <th>Libelleconv</th>
+                <td>{{ convention.libelleConv }}</td>
+            </tr>
+            <tr>
+                <th>Observconv</th>
+                <td>{{ convention.ObservConv }}</td>
+            </tr>
+            <tr>
+                <th>Imagecv</th>
+                <td>{{ convention.imageCv }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if convention.updatedAt %}{{ convention.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('convention_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('convention_edit', { 'idConv': convention.idConv }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

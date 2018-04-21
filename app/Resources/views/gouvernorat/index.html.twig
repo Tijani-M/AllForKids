@@ -1,0 +1,39 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <h1>Gouvernorats list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idgouvernorat</th>
+                <th>Libellegouvernorat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gouvernorat in gouvernorats %}
+            <tr>
+                <td><a href="{{ path('gouvernorat_show', { 'idGouvernorat': gouvernorat.idGouvernorat }) }}">{{ gouvernorat.idGouvernorat }}</a></td>
+                <td>{{ gouvernorat.libelleGouvernorat }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gouvernorat_show', { 'idGouvernorat': gouvernorat.idGouvernorat }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gouvernorat_edit', { 'idGouvernorat': gouvernorat.idGouvernorat }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gouvernorat_new') }}">Create a new gouvernorat</a>
+        </li>
+    </ul>
+{% endblock %}

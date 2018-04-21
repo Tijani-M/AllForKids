@@ -1,0 +1,24 @@
+convention_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:Convention:index" }
+    methods:  GET
+
+convention_show:
+    path:     /{idConv}/show
+    defaults: { _controller: "SanteBundle:Convention:show" }
+    methods:  GET
+
+convention_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:Convention:new" }
+    methods:  [GET, POST]
+
+convention_edit:
+    path:     /{idConv}/edit
+    defaults: { _controller: "SanteBundle:Convention:edit" }
+    methods:  [GET, POST]
+
+convention_delete:
+    path:     /{idConv}/delete
+    defaults: { _controller: "SanteBundle:Convention:delete" }
+    methods:  DELETE

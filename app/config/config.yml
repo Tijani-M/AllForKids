@@ -4,11 +4,15 @@ imports:
     - { resource: services.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
     - { resource: "@ScolariteBundle/Resources/config/services.yml" }
+    - { resource: "@SanteBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    app.path.urgence_images: /web/images/urgence
+    app.path.convention_images: /web/images/convention
+
 
 framework:
     #esi: ~
@@ -91,3 +95,14 @@ vich_uploader:
                     upload_destination: '%kernel.project_dir%/web/images/parascolaires'
                     namer:
                         service: vich_uploader.namer_uniqid
+        urgence_images:
+            uri_prefix: '%app.path.urgence_images%'
+            upload_destination:  '%kernel.root_dir%/../web/images/urgence' #'%kernel.project_dir%/web/images/urgence'
+            namer:
+                service: vich_uploader.namer_uniqid
+
+        convention_images:
+            uri_prefix: '%app.path.convention_images%'
+            upload_destination:  '%kernel.root_dir%/../web/images/convention' #'%kernel.project_dir%/web/images/urgence'
+            namer:
+                service: vich_uploader.namer_uniqid

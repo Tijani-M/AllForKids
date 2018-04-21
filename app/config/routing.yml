@@ -1,10 +1,14 @@
+sante:
+    resource: "@SanteBundle/Resources/config/routing.yml"
+    prefix:   /sante
+
 scolarite:
     resource: "@ScolariteBundle/Resources/config/routing.yml"
     prefix:   /
 
 user:
     resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
 app:
     resource: '@AppBundle/Controller/'

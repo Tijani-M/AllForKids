@@ -1,0 +1,24 @@
+localite_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:Localite:index" }
+    methods:  GET
+
+localite_show:
+    path:     /{idLocalite}/show
+    defaults: { _controller: "SanteBundle:Localite:show" }
+    methods:  GET
+
+localite_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:Localite:new" }
+    methods:  [GET, POST]
+
+localite_edit:
+    path:     /{idLocalite}/edit
+    defaults: { _controller: "SanteBundle:Localite:edit" }
+    methods:  [GET, POST]
+
+localite_delete:
+    path:     /{idLocalite}/delete
+    defaults: { _controller: "SanteBundle:Localite:delete" }
+    methods:  DELETE

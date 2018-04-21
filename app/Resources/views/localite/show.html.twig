@@ -1,0 +1,36 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <h1>Localite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idlocalite</th>
+                <td>{{ localite.idLocalite }}</td>
+            </tr>
+            <tr>
+                <th>Libellelocalite</th>
+                <td>{{ localite.libelleLocalite }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ localite.codePostal }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('localite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('localite_edit', { 'idLocalite': localite.idLocalite }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

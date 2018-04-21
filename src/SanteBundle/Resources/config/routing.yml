@@ -1,0 +1,27 @@
+sante_homepage:
+    path:     /
+    defaults: { _controller: SanteBundle:Default:index }
+
+sante_affichage:
+    path:     /affichage
+    defaults: { _controller: SanteBundle:Default:affichage }
+
+sante_localite:
+    resource: "@SanteBundle/Resources/config/routing/localite.yml"
+    prefix:   /localite
+
+sante_note:
+    resource: "@SanteBundle/Resources/config/routing/note.yml"
+    prefix:   /note
+
+sante_gouvernorat:
+    resource: "@SanteBundle/Resources/config/routing/gouvernorat.yml"
+    prefix:   /gouvernorat
+
+sante_convention:
+    resource: "@SanteBundle/Resources/config/routing/convention.yml"
+    prefix:   /convention
+
+sante_listeappelurgence:
+    resource: "@SanteBundle/Resources/config/routing/listeappelurgence.yml"
+    prefix:   /listeappelurgence
