@@ -46,6 +46,21 @@ class ParascolaireController extends Controller
         return $this->json($formatted);
     }
 
+    public function findJsonAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $parascolaire = $em->getRepository('ScolariteBundle:Parascolaire')->find($id);
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(1);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer=new Serializer([ $normalizer]);
+        $formatted=$serializer->normalize($parascolaire);
+        return $this->json($formatted);
+    }
+
     /**
      * Creates a new parascolaire entity.
      *

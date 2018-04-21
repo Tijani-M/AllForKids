@@ -8,6 +8,11 @@ adresseutile_json_index:
     defaults: { _controller: "ScolariteBundle:AdresseUtile:indexJson" }
     methods:  GET
 
+adresseutile_json_find:
+    path:     /json/{id}
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:findJson" }
+    methods:  GET
+
 adresseutile_show:
     path:     /{id}/show
     defaults: { _controller: "ScolariteBundle:AdresseUtile:show" }

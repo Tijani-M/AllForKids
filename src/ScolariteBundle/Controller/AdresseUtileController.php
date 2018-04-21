@@ -48,6 +48,22 @@ class AdresseUtileController extends Controller
 
     }
 
+    public function findJsonAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $adresseUtile = $em->getRepository('ScolariteBundle:AdresseUtile')->find($id);
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(1);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer=new Serializer([ $normalizer]);
+        $formatted=$serializer->normalize($adresseUtile);
+        return $this->json($formatted);
+
+    }
+
     public function mapAction()
     {
         $em = $this->getDoctrine()->getManager();
