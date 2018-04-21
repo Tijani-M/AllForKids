@@ -46,7 +46,8 @@
                     <!-- Hafedh K. Debut Modif-->
 
                     {#<a href="{{ path('sante_homepage') }}"  class="site_title">#}
-                        <img src="{{ asset('images/logo/Logo1.png') }} "  height="80"></a>
+                        <img src="{{ asset('images/logo/Logo1.png') }} "  height="80">
+                    {#</a>#}
 
                     {#<a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}" class="site_title"><i class="fa fa-paw"></i> <span>All For Kids</span></a>#}
 
@@ -66,11 +67,11 @@
                             <!--<span>Welcome,</span>-->
                             <span>Bienvenue,</span>
                             <h2>
-                                {{ app.user.username  }}
-                                <a href="{{ path('fos_user_security_logout') }}">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                                </a>
-                            </h2>
+                                {{ app.user.username }}
+                            </h2></br>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
                         </div>
                             {% else %}
                                 <div class="profile_pic">
@@ -86,9 +87,7 @@
                             </h2>
                         </div>
                             {% endif %}
-                            <!--John Doe-->
-                            <!-- Hafedh K. : Fin Modification-->
-
+                     <!-- Hafedh K. : Fin Modification-->
                 </div>
                 <!-- /menu profile quick info -->
 
@@ -258,11 +257,7 @@
                                 <a href="{{ path('fos_user_security_login') }}" class="glyphicon glyphicon-log-in" aria-hidden="true">
                                     {{ 'layout.login'|trans({}, 'FOSUserBundle')  }} </a>
                             {% endif %}
-                            <!--John Doe-->
                             <!-- Hafedh K. : Fin Modification-->
-
-
-                            </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="javascript:;"> Profile</a></li>
                                 <li>
@@ -373,7 +368,8 @@
                 <!--Hafedh K. :  Début-->
                     <strong> Administration - All For Kids </strong>
                     {#<a href="{{ path('sante_homepage') }}">#}
-                    <img src="{{ asset('images/logo/Logo1.png') }} "  height="50"></a>
+                    <img src="{{ asset('images/logo/Logo1.png') }} "  height="50">
+                    {#</a>#}
                 <!--Hafedh K. :  Fin-->
             </div>
             <div class="clearfix"></div>
