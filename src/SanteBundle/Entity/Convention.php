@@ -27,6 +27,11 @@ class Convention
     /**
      * @ORM\Column(type="string", nullable=true)
      */
+    private $descriptConv;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
     private $libelleConv;
 
     /**
@@ -147,7 +152,21 @@ class Convention
         $this->updatedAt = $updatedAt;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDescriptConv()
+    {
+        return $this->descriptConv;
+    }
 
+    /**
+     * @param mixed $descriptConv
+     */
+    public function setDescriptConv($descriptConv)
+    {
+        $this->descriptConv = $descriptConv;
+    }
 
     public function __toString()
     {

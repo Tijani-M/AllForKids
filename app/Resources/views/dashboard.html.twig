@@ -48,9 +48,7 @@
                     <a href="{{ path('sante_homepage') }}"  class="site_title">
                         <img src="{{ asset('images/logo/Logo1.png') }} "  height="80">
                     </a>
-
                     {#<a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}" class="site_title"><i class="fa fa-paw"></i> <span>All For Kids</span></a>#}
-
                     <!-- Hafedh K. Fin Modif-->
                 </div>
 
@@ -96,7 +94,7 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section">
-                        <h3>General</h3>
+                        <h3>Configuration</h3>
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
@@ -105,7 +103,7 @@
                                     <li><a href="{{ asset('bundles/dashboard/gentelella/index3.html') }}">Dashboard3</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-edit"></i> Scolarité <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-edit"></i>Espace Scolarité <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a>Parascolaires<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
@@ -118,7 +116,7 @@
                                     </li>
                                     <li><a>Adresses utiles<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="{{ path('categorielieu_index') }}">Catégiries</a></li>
+                                            <li><a href="{{ path('categorielieu_index') }}">Catégories</a></li>
                                             <li><a href="{{ path('adresseutile_index') }}">Liste complète</a></li>
                                             <li><a href="{{ path('adresseutile_search') }}">Recherche</a></li>
                                             <li><a href="{{ path('imagelieu_index') }}">Galerie des images</a></li>
@@ -127,6 +125,36 @@
                                     </li>
                                 </ul>
                             </li>
+                            <!--Hafedh K. Debut modif : Ajout menu de l'Espace scolarité-->
+                            <li><a><i class="fa fa-ambulance"></i>Espace Santé<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a>Paramètres<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('localite_index') }}">Localité</a></li>
+                                            <li><a href="{{ path('gouvernorat_index') }}">Gouvernorat</a></li>
+                                            <li><a href="{{ path('listeappelurgence_index') }}">Num Urgence</a></li>
+                                            <li><a href="{{ path('parascolaire_search') }}">Recherche</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Gestion Professionnel<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('sante_homepage') }}">Catégorie</a></li>
+                                            <li><a href="{{ path('sante_homepage') }}">Spécialité</a></li>
+                                            <li><a href="{{ path('convention_index') }}">Convention</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a>Validation<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="{{ path('sante_homepage') }}">Utilisateurs</a></li>
+                                            <li><a href="{{ path('sante_homepage') }}">Données professionnels</a></li>
+                                            <li><a href="{{ path('sante_homepage') }}">Publications</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--Hafedh K. Fin modif : Ajout menu de l'Espace scolarité-->
+
+
                             <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ asset('bundles/dashboard/gentelella/form.html') }}">General Form</a></li>
