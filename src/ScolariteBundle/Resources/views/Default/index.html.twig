@@ -1,9 +1,22 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
+    <p>Index de Default scolarité // Hello World!</p>
 
-    Index de Default scolarité
+    <div class="x_panel" align="auto">
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <h2 align="center">
+                {{ app.user.username }}
+            </h2></br>
+            <h1 align="center">Bienvenue à l'Administration du site</h1>
 
-Hello World!
+        {% else %}
+            <h1 align="center">Veuillez vous connecter</h1>
+        {% endif %}
+
+        <div align="center">
+            <img  src="{{ asset('images/logo/Logo1.png') }} "  height="350">
+        </div>
+    </div>
 
 {% endblock body %}
