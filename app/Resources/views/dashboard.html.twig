@@ -295,12 +295,14 @@
                                     </a>
                                 </li>
                                 <li><a href="javascript:;">Help</a></li>
-                                <li><a href="{{ asset('bundles/dashboard/gentelella/login.html') }}"><i class="fa fa-sign-out pull-right"></i>
-                                        <!-- Hafedh K. : Début Modification-->
-                                        <a href="{{ path('fos_user_security_logout') }}">
-                                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+
+                                <!-- Hafedh K. : Début Modification-->
+                                <li> <a href="{{ path('fos_user_security_logout') }}">
+                                    {#<a href="{{ asset('bundles/dashboard/gentelella/login.html') }}">#}
+                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                        <i class="fa fa-sign-out pull-right"></i>
                                         </a>
-                                        Log Out</a></li>
+                                </li>
                                         <!-- Hafedh K. : Fin Modification-->
                             </ul>
                         </li>

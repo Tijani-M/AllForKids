@@ -4,17 +4,19 @@
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post" >
+{#<form action="{{ path("fos_user_security_check") }}" method="post" >
     {% if csrf_token %}
         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     {% endif %}
-<table style="border-spacing: 10px; border-collapse: separate;">
+
+
+        <table style="border-spacing: 10px; border-collapse: separate;">
     <tr>
         <td>
             <label for="username">{{ 'security.login.username'|trans }}</label>
         </td>
         <td>
-            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+            #}{#<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />#}{#
         </td>
     </tr>
     <tr>
@@ -22,7 +24,7 @@
             <label for="password">{{ 'security.login.password'|trans }}</label>
         </td>
         <td>
-            <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+            #}{#<input type="password" id="password" name="_password" required="required" autocomplete="current-password" />#}{#
         </td>
     </tr>
 
@@ -31,10 +33,84 @@
 
 
 
-    <div class="item form-group">
+#}{#    <div class="item form-group">
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
     <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+    </div>#}{#
+
+    #}{#<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />#}{#
+</form>#}
+
+
+{#début New Form Hafedh#}
+
+<!-- Bootstrap -->
+<link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+<!-- NProgress -->
+<link href="{{ asset('bundles/dashboard/gentelella/../vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+<!-- Animate.css -->
+<link href="{{ asset('bundles/dashboard/gentelella/../vendors/animate.css/animate.min.css')}}" rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css')}}" rel="stylesheet">
+
+
+<body class="login">
+    <div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+
+    <div class="login_wrapper">
+        {#<div class="animate form login_form">#}
+            <section class="login_content">
+
+                <form action="{{ path("fos_user_security_check") }}" method="post" >
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+                    <h1>{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</h1>
+                    <div>
+                        {#<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />#}
+                        <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="{{ 'security.login.username'|trans }}" required="required" autocomplete="username"/>
+                    </div>
+                    <div>
+                        {#<input type="password" id="password" name="_password" required="required" autocomplete="current-password" />#}
+                        <input type="password" id="password" name="_password" class="form-control" placeholder="{{ 'security.login.password'|trans }}" required="required" autocomplete="current-password"/>
+                    </div>
+                    <div>
+                        <input class="btn btn-default submit" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        {#<a class="btn btn-default submit" href="index-2.html">Log in</a>#}
+{#ajout1 #}
+                        <div class="item form-group">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        </div>
+{#fin ajout1 #}
+                        <a class="reset_pass" href="#" > {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }} ?</a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">Nouveau membre ?
+                            <u><strong><a href="{{ path("fos_user_registration_register") }}" class="to_register"> {{ 'layout.register'|trans({}, 'FOSUserBundle') }} </a></strong></u>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+                    </div>
+                        <div>
+                            <img src="{{ asset('images/logo/Logo1.png') }} "  height="100">
+
+                            <p>©2018 All Rights Reserved. Team One</p>
+                        </div>
+
+                </form>
+            </section>
+        </div>
     </div>
 
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
+<body/>

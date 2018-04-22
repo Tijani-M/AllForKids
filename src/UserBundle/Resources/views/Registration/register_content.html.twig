@@ -58,7 +58,8 @@
         <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
                 <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}"/>
-                <button type="submit" class="btn btn-primary">Cancel</button>
+                <a href="{{ path('fos_user_security_login') }}" class="btn btn-warning" role="button" >Annuler</a>
+                {#<button type="submit" class="btn btn-primary">Cancel</button>#}
             </div>
         </div>
         {{ form_end(form) }}
