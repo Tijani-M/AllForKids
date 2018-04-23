@@ -8,6 +8,7 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('ScolariteBundle:Default:index.html.twig');
+        //return $this->redirectToRoute('sante_homepage');
+        return $this->render('ScolariteBundle:Default:home.html.twig');
     }
 }

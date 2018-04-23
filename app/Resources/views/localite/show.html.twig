@@ -1,36 +1,40 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Localite</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Idlocalite</th>
-                <td>{{ localite.idLocalite }}</td>
-            </tr>
-            <tr>
-                <th>Libellelocalite</th>
-                <td>{{ localite.libelleLocalite }}</td>
-            </tr>
-            <tr>
-                <th>Codepostal</th>
-                <td>{{ localite.codePostal }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="title_left">
+        <h1 align="center">Gestion des Localités</h1>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('localite_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('localite_edit', { 'idLocalite': localite.idLocalite }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="x_panel" align="auto">
+        <div class="x_title">
+            <div class="clearfix">
+                <div>
+                    <h2 align="center"><u>Affichage Localité</u> : {{ localite.idLocalite }}</h2>
+                </div>
+                <ul class="nav navbar-right ">
+                    <a href="{{ path('localite_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                    <a href="{{ path('localite_edit',{ 'idLocalite': localite.idLocalite }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <table class="table table-bordered">
+                <tbody>
+                <tr>
+                    <th>Libelle Localité :</th>
+                    <td>{{ localite.libelleLocalite }}</td>
+                </tr>
+                <tr>
+                    <th>Code Postal :</th>
+                    <td>{{ localite.codePostal }}</td>
+                </tr>
+                <tr>
+                    <th>Gouvernorat :</th>
+                    <td>{{ localite.gouvernorat }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

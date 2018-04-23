@@ -42,7 +42,7 @@ class ConventionController extends Controller
             $em->persist($convention);
             $em->flush();
 
-            return $this->redirectToRoute('convention_show', array('idConv' => $convention->getIdconv()));
+            return $this->redirectToRoute('convention_index', array('idConv' => $convention->getIdconv()));
         }
 
         return $this->render('convention/new.html.twig', array(
@@ -78,7 +78,7 @@ class ConventionController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('convention_edit', array('idConv' => $convention->getIdconv()));
+            return $this->redirectToRoute('convention_index', array('idConv' => $convention->getIdconv()));
         }
 
         return $this->render('convention/edit.html.twig', array(

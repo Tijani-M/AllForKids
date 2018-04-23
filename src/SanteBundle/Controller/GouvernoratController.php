@@ -42,7 +42,7 @@ class GouvernoratController extends Controller
             $em->persist($gouvernorat);
             $em->flush();
 
-            return $this->redirectToRoute('gouvernorat_show', array('idGouvernorat' => $gouvernorat->getIdgouvernorat()));
+            return $this->redirectToRoute('gouvernorat_index', array('idGouvernorat' => $gouvernorat->getIdgouvernorat()));
         }
 
         return $this->render('gouvernorat/new.html.twig', array(
@@ -78,7 +78,7 @@ class GouvernoratController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('gouvernorat_edit', array('idGouvernorat' => $gouvernorat->getIdgouvernorat()));
+            return $this->redirectToRoute('gouvernorat_index', array('idGouvernorat' => $gouvernorat->getIdgouvernorat()));
         }
 
         return $this->render('gouvernorat/edit.html.twig', array(

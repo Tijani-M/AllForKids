@@ -13,7 +13,10 @@ class LocaliteType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelleLocalite')->add('codePostal')->add('gouvernorat');
+        $builder
+            ->add('libelleLocalite')
+            ->add('codePostal')
+                ->add('gouvernorat');
     }/**
      * {@inheritdoc}
      */

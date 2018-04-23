@@ -42,7 +42,7 @@ class LocaliteController extends Controller
             $em->persist($localite);
             $em->flush();
 
-            return $this->redirectToRoute('localite_show', array('idLocalite' => $localite->getIdlocalite()));
+            return $this->redirectToRoute('localite_index', array('idLocalite' => $localite->getIdlocalite()));
         }
 
         return $this->render('localite/new.html.twig', array(
@@ -78,7 +78,7 @@ class LocaliteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('localite_edit', array('idLocalite' => $localite->getIdlocalite()));
+            return $this->redirectToRoute('localite_index', array('idLocalite' => $localite->getIdlocalite()));
         }
 
         return $this->render('localite/edit.html.twig', array(

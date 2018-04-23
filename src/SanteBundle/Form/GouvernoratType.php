@@ -3,6 +3,7 @@
 namespace SanteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,7 @@ class GouvernoratType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('libelleGouvernorat');
+        $builder->add('libelleGouvernorat',TextType::class,array("label"=>"Nom Gouvernorat"));
     }/**
      * {@inheritdoc}
      */
