@@ -1,29 +1,41 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Convention</h1>
 
-    <table>
+    <div class="title_left">
+        <h1 align="center">Gestion des Conventions</h1>
+    </div>
+
+<div class="x_panel" align="auto">
+    <div class="x_title">
+        <div class="clearfix">
+            <div>
+                <h2 align="center"><u>Affichage convention</u> : {{ convention.idConv }}</h2>
+            </div>
+            <ul class="nav navbar-right ">
+                <a href="{{ path('convention_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                <a href="{{ path('convention_edit',{ 'idConv': convention.idConv }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+            </ul>
+        </div>
+    </div>
+
+    <table border="3px">
         <tbody>
             <tr>
-                <th>Idconv</th>
-                <td>{{ convention.idConv }}</td>
-            </tr>
-            <tr>
-                <th>Libelleconv</th>
+                <th>Libelle :</th>
                 <td>{{ convention.libelleConv }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Description :</th>
                 <td>{{ convention.descriptConv }}</td>
             </tr>
             <tr>
-                <th>Observconv</th>
+                <th>Observation : </th>
                 <td>{{ convention.ObservConv }}</td>
             </tr>
             <tr>
-                <th>Imagecv</th>
-                <td>{{ convention.imageCv }}</td>
+                <th>Logo :</th>
+                <td><img src="{{ asset('images/convention/') }}{{ convention.imagecv }}"  height="50"></td>
             </tr>
             <tr>
                 <th>Updatedat</th>
@@ -31,18 +43,8 @@
             </tr>
         </tbody>
     </table>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('convention_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('convention_edit', { 'idConv': convention.idConv }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <h2>Reste à afficher les professionnels affectés à cette convention.</h2>
+
 {% endblock %}

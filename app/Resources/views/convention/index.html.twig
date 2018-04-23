@@ -53,9 +53,9 @@
                             <td><img src="{{ asset('images/convention/') }}{{ convention.imagecv }}"  height="50"></td>
                             <td>{% if convention.updatedAt %}{{ convention.updatedAt|date('Y-m-d') }}{% endif %}</td>
                             <td>
-                                <a href="{{ path('convention_edit', { 'idConv': convention.idConv }) }}"><i class="fa fa-edit"></i> Modifier </a>
-                                </br>
-                                <a href="{{ path('convention_delete', { 'idConv': convention.idConv }) }}"><i class="fa fa-trash"></i> Supprimer </a>
+                                <a href="{{ path('convention_edit', { 'idConv': convention.idConv }) }}"><i class="fa fa-edit"></i> Modifier
+                                    </br><i class="fa fa-trash"></i> Supprimer</a>
+                                {#<a href="{{ path('convention_delete', { 'idConv': convention.idConv }) }}"><i class="fa fa-trash"></i> Supprimer </a>#}
                             </td>
                         </tr>
                     {% endfor %}

@@ -1,7 +1,88 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Convention edit</h1>
+
+    <div class="title_left">
+        <h1 align="center">Gestion des Conventions</h1>
+    </div>
+
+
+<div class="x_panel" align="auto">
+    <div class="x_title">
+        <div class="clearfix">
+            <div>
+                <h2 align="center"><u>Modification / Suppression convention</u> :</h2>
+            </div>
+            <ul class="nav navbar-right ">
+                <a href="{{ path('convention_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="x_content dashboard_graph">
+        <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+            {{ form_start(edit_form) }}
+            <div class="form-group">
+                {{ form_label(edit_form.libelleConv, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.libelleConv, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.descriptConv, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.descriptConv, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+                <td><img src="{{ asset('images/convention/') }}{{ convention.imagecv }}"  height="50"></td>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.ObservConv, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.ObservConv, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(edit_form.imageFileCv, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.imageFileCv) }}
+                </div>
+
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" align="center">
+                    <input class="btn btn-primary" type="submit" value="Modifier"/>
+                    <a href="{{ path('convention_index') }}" class="btn btn-warning" role="button" >Annuler</a>
+                </div>
+            </div>
+            {{ form_end(edit_form) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" align="center">
+                {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+        </div></div>
+
+</div></div>
+
+{#    <h1>Convention edit</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -17,5 +98,5 @@
                 <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
-    </ul>
+    </ul>#}
 {% endblock %}
