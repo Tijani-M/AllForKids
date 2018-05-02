@@ -6,7 +6,7 @@ adresseutile_index:
 adresseutile_json_index:
     path:     /json
     defaults: { _controller: "ScolariteBundle:AdresseUtile:indexJson" }
-    methods:  GET
+    methods:  [GET, POST]
 
 adresseutile_json_find:
     path:     /json/{id}
