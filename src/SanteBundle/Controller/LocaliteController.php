@@ -2,8 +2,11 @@
 
 namespace SanteBundle\Controller;
 
+use SanteBundle\Entity\Gouvernorat;
 use SanteBundle\Entity\Localite;
+use SanteBundle\Form\LocaliteSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -12,17 +15,25 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class LocaliteController extends Controller
 {
+
     /**
-     * Lists all localite entities.
+     * Lists all localite entities, with Search by Gouvernorat.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $localites = $em->getRepository('SanteBundle:Localite')->findAll();
-
+//02/05/2018 : Début Recherche par Gouvernorat
+        $form=$this->createForm(LocaliteSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $idGouv = $request->request->get("localite_search")["gouvernorat"];
+            $localites = $em->getRepository('SanteBundle:Localite')->findByGouv($idGouv);
+        }
+//02/05/2018 : Fin Recherche par Gouvernorat
         return $this->render('localite/index.html.twig', array(
+            'form' => $form->createView(),
             'localites' => $localites,
         ));
     }
@@ -106,6 +117,8 @@ class LocaliteController extends Controller
         return $this->redirectToRoute('localite_index');
     }
 
+
+
     /**
      * Creates a form to delete a localite entity.
      *
@@ -121,4 +134,5 @@ class LocaliteController extends Controller
             ->getForm()
         ;
     }
+
 }

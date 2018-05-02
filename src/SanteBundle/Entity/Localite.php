@@ -106,7 +106,7 @@ class Localite
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->getGouvernorat();
+        return $this->getLibelleLocalite();
 
     }
 
