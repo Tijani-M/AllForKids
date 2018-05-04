@@ -1,45 +1,41 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Listeappelurgence</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Idnumurgence</th>
-                <td>{{ listeAppelUrgence.idNumUrgence }}</td>
-            </tr>
-            <tr>
-                <th>Libellenumurgence</th>
-                <td>{{ listeAppelUrgence.libelleNumUrgence }}</td>
-            </tr>
-            <tr>
-                <th>Numurgence</th>
-                <td>{{ listeAppelUrgence.NumUrgence }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}" height="200"></td>
-                {#<td>{{ listeAppelUrgence.image }}</td>#}
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if listeAppelUrgence.updatedAt %}{{ listeAppelUrgence.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('listeappelurgence_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('listeappelurgence_edit', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="title_left">
+        <h1 align="center">Gestion des Appels d'Urgence</h1>
+    </div>
+    <div class="x_panel" align="auto">
+        <div class="x_title">
+            <div class="clearfix">
+                <div>
+                    <h2 align="center"><u>Affichage Num Appel Urgence</u> : {{ listeAppelUrgence.Idnumurgence }}</h2>
+                </div>
+                <ul class="nav navbar-right ">
+                    <a href="{{ path('listeappelurgence_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                    <a href="{{ path('listeappelurgence_edit',{ 'idNumUrgence': listeAppelUrgence.Idnumurgence }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+                </ul>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th>Libellé :</th>
+                    <td>{{ listeAppelUrgence.libelleNumUrgence }}</td>
+                </tr>
+                <tr>
+                    <th>Num Urgence :</th>
+                    <td>{{ listeAppelUrgence.NumUrgence }}</td>
+                </tr>
+                <tr>
+                    <th>Logo : </th>
+                    <td><img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}" height="50"></td>
+                </tr>
+                <tr>
+                    <th>Date Mise à jour :</th>
+                    <td>{% if listeAppelUrgence.updatedAt %}{{ listeAppelUrgence.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

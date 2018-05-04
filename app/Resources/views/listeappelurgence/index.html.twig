@@ -1,49 +1,52 @@
 {% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Listeappelurgences list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Idnumurgence</th>
-                <th>Libellenumurgence</th>
-                <th>Numurgence</th>
-                <th>Image</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for listeAppelUrgence in listeAppelUrgences %}
-            <tr>
-                <td><a href="{{ path('listeappelurgence_show', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">{{ listeAppelUrgence.idNumUrgence }}</a></td>
-                <td>{{ listeAppelUrgence.libelleNumUrgence }}</td>
-                <td>{{ listeAppelUrgence.NumUrgence }}</td>
-
-                <td><img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}"  height="60"></td>
-
-                {#<img src="{{ vich_uploader_asset(listeAppelUrgence, 'imageFile') }}" alt="{{ listeAppelUrgence.image }}" height="2000"/>#}
-
-                <td>{% if listeAppelUrgence.updatedAt %}{{ listeAppelUrgence.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('listeappelurgence_show', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('listeappelurgence_edit', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('listeappelurgence_new') }}">Create a new listeAppelUrgence</a>
-        </li>
-    </ul>
+    <div class="title_left">
+        <h1 align="center">Gestion des Appels d'Urgence</h1>
+    </div>
+    <div class="x_panel" align="auto">
+        <div class="x_title">
+            <div class="clearfix">
+                <div>
+                    <h2 align="center"><u>Liste des numéros d'Appel d'Urgence</u> : <small>Détails</small></h2>
+                </div>
+                <ul class="nav navbar-right ">
+                    <a href="{{ path('listeappelurgence_new') }}"><i class="fa fa-save"></i> Créer Numéro Appel Urgence</a>
+                </ul>
+            </div>
+        </div>
+        <div align="left">
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Libellé</th>
+                        <th>Num Urgence</th>
+                        <th>Image</th>
+                        <th>Date Création</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for listeAppelUrgence in listeAppelUrgences %}
+                        <tr>
+                            <td><a href="{{ path('listeappelurgence_show', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}"><i class="fa fa-eye"></i><u>{{ listeAppelUrgence.idNumUrgence }}</u></a></td>
+                            <td>{{ listeAppelUrgence.libelleNumUrgence }}</td>
+                            <td>{{ listeAppelUrgence.NumUrgence }}</td>
+                            <td><img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}"  height="50"></td>
+                            {#<img src="{{ vich_uploader_asset(listeAppelUrgence, 'imageFile') }}" alt="{{ listeAppelUrgence.image }}" height="2000"/>#}
+                            <td>{% if listeAppelUrgence.updatedAt %}{{ listeAppelUrgence.updatedAt|date('Y-m-d') }}{% endif %}</td>
+                            <td>
+                                        <a href="{{ path('listeappelurgence_edit', { 'idNumUrgence': listeAppelUrgence.idNumUrgence }) }}"><i class="fa fa-edit"></i> Modifier
+                                            </br><i class="fa fa-trash"></i> Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}

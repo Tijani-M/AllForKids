@@ -25,3 +25,11 @@ sante_convention:
 sante_listeappelurgence:
     resource: "@SanteBundle/Resources/config/routing/listeappelurgence.yml"
     prefix:   /listeappelurgence
+
+sante_specialite:
+    resource: "@SanteBundle/Resources/config/routing/specialite.yml"
+    prefix:   /specialite
+
+sante_categorieprofessionnel:
+    resource: "@SanteBundle/Resources/config/routing/categorieprofessionnel.yml"
+    prefix:   /categorieprofessionnel

@@ -42,7 +42,8 @@ class ListeAppelUrgenceController extends Controller
             $em->persist($listeAppelUrgence);
             $em->flush();
 
-            return $this->redirectToRoute('listeappelurgence_show', array('idNumUrgence' => $listeAppelUrgence->getIdnumurgence()));
+//            return $this->redirectToRoute('listeappelurgence_show', array('idNumUrgence' => $listeAppelUrgence->getIdnumurgence()));
+            return $this->redirectToRoute('listeappelurgence_index');
         }
 
         return $this->render('listeappelurgence/new.html.twig', array(
@@ -78,7 +79,7 @@ class ListeAppelUrgenceController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('listeappelurgence_edit', array('idNumUrgence' => $listeAppelUrgence->getIdnumurgence()));
+            return $this->redirectToRoute('listeappelurgence_index', array('idNumUrgence' => $listeAppelUrgence->getIdnumurgence()));
         }
 
         return $this->render('listeappelurgence/edit.html.twig', array(
