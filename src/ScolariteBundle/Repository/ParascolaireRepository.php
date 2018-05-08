@@ -13,15 +13,31 @@ use Doctrine\ORM\EntityRepository;
 
 class ParascolaireRepository extends EntityRepository
 {
-    public function recherche($typePara, $matiere){
+    public function recherche($typePara, $matiere)
+    {
 
-        $qb=$this->createQueryBuilder("p")
+        $qb = $this->createQueryBuilder("p")
             ->select("p")
             ->where("p.typePara=:typePara")
             ->andWhere("p.matiere=:matiere")
-            ->setParameter("typePara",$typePara)
-            ->setParameter("matiere",$matiere);
+            ->setParameter("typePara", $typePara)
+            ->setParameter("matiere", $matiere);
 
         return $qb->getQuery()->getResult();
     }
+
+    public function chercherNonValide($id)
+    {
+
+        $qb = $this->createQueryBuilder("p")
+            ->select("p")
+            ->where("p.valide=:valide")
+            ->andWhere("p.membreProposant!=:membre")
+            ->setParameter("valide", false)
+            ->setParameter("membre", $id);
+
+        return $qb->getQuery()->getResult();
+    }
+
+
 }
