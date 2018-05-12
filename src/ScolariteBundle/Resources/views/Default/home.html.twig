@@ -1,11 +1,14 @@
-<html>
-    <head>
-        <h2 align="center">Welcome page : <small> A mettre page d'accueil du Front</small></h2>
-    </head>
-    <body>
+{% extends 'front.html.twig' %}
+
+{% block body %}
+{#<html>#}
+    {#<head>#}
+        {#<h2 align="center">Welcome page : <small> A mettre page d'accueil du Front</small></h2>#}
+    {#</head>#}
+    {#<body>#}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div class="profile_pic" align="center">
-            <img src="{{ asset('images/users/img.jpg') }}" alt="..." height="80" class="img-circle profile_img">
+            <img src="{{ asset('images/users/img.jpg') }}" alt="..." height="20" class="img-circle profile_img">
         </div>
         <div class="profile_info">
             <h4 align="center">Bienvenue,</h4>
@@ -17,7 +20,7 @@
 
     {% else %}
         <div class="profile_pic" align="center">
-            <img src="{{ asset('images/users/user.png') }}" alt="..." height="80" class="img-circle profile_img">
+            <img src="{{ asset('images/logo/icon1.jpg') }}" alt="..." height="20" class="img-circle profile_img">
         </div>
             <h3 align="center">Veuillez vous connecter,</h3>
             <h4 align="center">
@@ -25,9 +28,11 @@
             </h4>
     {% endif %}
 
-    </div>
-    </body>
-    <div align="center">
-        <img  src="{{ asset('images/logo/Logo1.png') }} "  height="350">
-    </div>
-</html>
+    {#</div>#}
+    {#</body>#}
+    {#<div align="center">#}
+        {#<img  src="{{ asset('images/logo/Logo1.png') }} "  height="350">#}
+    {#</div>#}
+{#</html>#}
+
+{% endblock body %}

@@ -47,7 +47,7 @@
                 <div class="navbar nav_title" style="border: 0;">
                     <!-- Hafedh K. Debut Modif-->
 
-                    <a href="{{ path('sante_homepage') }}"  class="site_title">
+                    <a href="{{ path('scolarite_homepage') }}"  class="site_title">
                         <img src="{{ asset('images/logo/Logo1.png') }} "  height="80">
                     </a>
                     {#<a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}" class="site_title"><i class="fa fa-paw"></i> <span>All For Kids</span></a>#}
@@ -98,12 +98,15 @@
                     <div class="menu_section">
                         <h3>Configuration</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                            <li><a href="{{ path('scolarite_homepage') }}"><i class="fa fa-home"></i>Site AllForKids</a>
+{#
+                                <span class="fa fa-chevron-down"></span>
                                 <ul class="nav child_menu">
                                     <li><a href="{{ asset('bundles/dashboard/gentelella/index-2.html') }}">Dashboard</a></li>
                                     <li><a href="{{ asset('bundles/dashboard/gentelella/index2.html') }}">Dashboard2</a></li>
                                     <li><a href="{{ asset('bundles/dashboard/gentelella/index3.html') }}">Dashboard3</a></li>
                                 </ul>
+#}
                             </li>
                             <li><a><i class="fa fa-edit"></i>Espace Scolarité <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
@@ -383,12 +386,10 @@
         <div class="right_col" role="main">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
+                    {% block body %}
 
-                                    {% block body %}
-
-                                    {% endblock %}
-
-                </div>
+                    {% endblock %}
+               </div>
             </div>
         </div>
         <!-- /page content -->
@@ -398,7 +399,7 @@
             <div class="pull-right">
                 <!--Hafedh K. :  Début-->
                     <strong> Administration - All For Kids </strong>
-                    <a href="{{ path('sante_homepage') }}">
+                    <a href="{{ path('scolarite_homepage') }}">
                     <img src="{{ asset('images/logo/Logo1.png') }} "  height="50">
                     </a>
                 <!--Hafedh K. :  Fin-->
