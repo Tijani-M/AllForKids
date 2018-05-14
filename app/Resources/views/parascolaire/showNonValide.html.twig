@@ -1,0 +1,58 @@
+{% extends "dashboard.html.twig" %}
+
+{% block body %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Parascolaire
+                <small>validation</small>
+            </h2>
+            <ul class="nav navbar-right ">
+                <li>
+                    <a href="{{ path('parascolaire_new') }}">Ajouter un contenu parascolaire</a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Fichier</th>
+                    <th>Matière</th>
+                    <th>Type</th>
+                    <th>Date d'ajoût</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for parascolaire in parascolaires %}
+                    <tr>
+                        <td align="center">
+                            <a href="{{ path('parascolaire_show', { 'id': parascolaire.id }) }}"><i class="fa fa-eye"></i></a>
+                        </td>
+                        <td>{{ parascolaire.titre }}</td>
+                        <td>{{ parascolaire.description }}</td>
+                        <td align="center">
+                            <a href="{{ asset('images/parascolaires/') }}{{ parascolaire.fileName }}"><i class="fa fa-download"></i></a>
+                        </td>
+                        <td>{{ parascolaire.matiere }}</td>
+                        <td>{{ parascolaire.typePara }}</td>
+                        <td>{% if parascolaire.dateAjout %}{{ parascolaire.dateAjout|date('Y-m-d') }}{% endif %}</td>
+                        <td>
+                            <a href="{{ path('parascolaire_validate', { 'id': parascolaire.id }) }}">
+                                <i class="fa fa-check"></i>Valider
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

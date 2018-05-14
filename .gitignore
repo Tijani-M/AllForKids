@@ -3,7 +3,7 @@
 /build/
 /phpunit.xml
 /var/*
-!/var/cache
+/var/cache
 /var/cache/*
 !var/cache/.gitkeep
 !/var/logs
@@ -14,7 +14,7 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 #/vendor/
-#/web/bundles/
+/web/bundles/
 
 
 # Created by https://www.gitignore.io/api/windows,intellij+all,phpstorm+all
