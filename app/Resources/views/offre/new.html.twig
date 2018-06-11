@@ -1,0 +1,144 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+    <div class="title_left">
+        <h1 align="center">Creer une nouvelle Offre </h1>
+    </div>
+
+
+<div class="x_content dashboard_graph">
+    <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    {{ form_start(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.Nom, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.Nom, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.Prenom, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.Prenom, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.discription, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.discription, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(form.tel, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.tel, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(form.adresse, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.adresse, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(form.heureD, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.heureD, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            {{ form_label(form.heureF, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.heureF, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.prix, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.prix, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.enfant, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.enfant, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+    </div>
+
+        <div class="form-group">
+            {{ form_label(form.imageFile, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+                {{ form_widget(form.imageFile) }}
+
+
+        </div>
+</div>
+
+
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('offre_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}

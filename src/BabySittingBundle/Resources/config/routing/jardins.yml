@@ -1,0 +1,24 @@
+jardins_index:
+    path:     /
+    defaults: { _controller: "BabySittingBundle:Jardins:index" }
+    methods:  GET
+
+jardins_show:
+    path:     /{id}/show
+    defaults: { _controller: "BabySittingBundle:Jardins:show" }
+    methods:  GET
+
+jardins_new:
+    path:     /new
+    defaults: { _controller: "BabySittingBundle:Jardins:new" }
+    methods:  [GET, POST]
+
+jardins_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BabySittingBundle:Jardins:edit" }
+    methods:  [GET, POST]
+
+jardins_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BabySittingBundle:Jardins:delete" }
+    methods:  DELETE

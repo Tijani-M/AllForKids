@@ -1,0 +1,24 @@
+imagepub_index:
+    path:     /
+    defaults: { _controller: "BabySittingBundle:ImagePub:index" }
+    methods:  GET
+
+imagepub_show:
+    path:     /{id}/show
+    defaults: { _controller: "BabySittingBundle:ImagePub:show" }
+    methods:  GET
+
+imagepub_new:
+    path:     /new
+    defaults: { _controller: "BabySittingBundle:ImagePub:new" }
+    methods:  [GET, POST]
+
+imagepub_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BabySittingBundle:ImagePub:edit" }
+    methods:  [GET, POST]
+
+imagepub_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BabySittingBundle:ImagePub:delete" }
+    methods:  DELETE

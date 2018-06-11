@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <h2 align="center">Welcome page : <small> A mettre page d'accueil du Front</small></h2>
+    </head>
+    <body>
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <div class="profile_pic" align="center">
+            <img src="{{ asset('images/users/img.jpg') }}" alt="..." height="80" class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <h4 align="center">Bienvenue,</h4>
+            <h2 align="center">{{ app.user.username }}</h2>
+            <h4 align="center">
+            <a href="{{ path('sante_homepage') }}">Connexion Administration</a>
+            </h4>
+        </div>
+
+    {% else %}
+        <div class="profile_pic" align="center">
+            <img src="{{ asset('images/users/user.png') }}" alt="..." height="80" class="img-circle profile_img">
+        </div>
+            <h3 align="center">Veuillez vous connecter,</h3>
+            <h4 align="center">
+                <a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+            </h4>
+    {% endif %}
+
+    </div>
+    </body>
+    <div align="center">
+        <img  src="{{ asset('images/logo/Logo1.png') }} "  height="350">
+    </div>
+</html>

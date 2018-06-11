@@ -1,0 +1,73 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <div class="title_left">
+        <h1 align="center">Demande {{ demande.Nom }} {{ demande.Prenom }} </h1>
+    </div>
+
+   <div class="x_panel" align="auto">
+
+     <table id="datatable" class="table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ demande.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ demande.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ demande.Prenom }}</td>
+            </tr>
+            <tr>
+                <th>Discription</th>
+                <td>{{ demande.discription }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ demande.tel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ demande.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Heured</th>
+                <td>{{ demande.heureD }}</td>
+            </tr>
+            <tr>
+                <th>Heuref</th>
+                <td>{{ demande.heureF }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ demande.prix }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ demande.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if demande.updatedAt %}{{ demande.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+       </div>
+{% endblock %}
