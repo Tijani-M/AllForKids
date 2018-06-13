@@ -13,6 +13,11 @@ adresseutile_json_find:
     defaults: { _controller: "ScolariteBundle:AdresseUtile:findJson" }
     methods:  GET
 
+adresseutile_json_new:
+    path:     /json/new
+    defaults: { _controller: "ScolariteBundle:AdresseUtile:newJson" }
+    methods:  [GET, POST]
+
 adresseutile_show:
     path:     /{id}/show
     defaults: { _controller: "ScolariteBundle:AdresseUtile:show" }
