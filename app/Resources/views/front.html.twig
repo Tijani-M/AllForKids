@@ -38,9 +38,28 @@
                 <div class='cws-widget-content '>
                     <div class="latest_tweets ">
                         {#KH. insertion page de connexion#}
-                        {% block body %}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <div class="profile_pic" align="center">
+                                <img src="{{ asset('images/users/img.jpg') }}" alt="..." height="20" class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <h4 align="center">Bienvenue,</h4>
+                                <h2 align="center">{{ app.user.username }}</h2>
+                                <h4 align="center">
+                                    <a href="{{ path('sante_homepage') }}">Accès Administration</a>
+                                </h4>
+                            </div>
 
-                        {% endblock %}
+                        {% else %}
+                            <div class="profile_pic" align="center">
+                                <img src="{{ asset('images/logo/icon1.jpg') }}" alt="..." height="20" class="img-circle profile_img">
+                            </div>
+                            <h3 align="center">Veuillez vous connecter,</h3>
+                            <h4 align="center">
+                                <a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            </h4>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
@@ -53,200 +72,69 @@
     <header id="kids_header">
         <div class="l-page-width clearfix">
             <ul class="kids_social">
-                <li class="openbtn"><a href="#" title="Login"></a></li>
+                <li class="openbtn"><a href="#" title="Administration"></a></li>
                 <li><a href="https://plus.google.com/+allforkids" title="Google Plus" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a><span style="background-color:#dd4b39;"></span></li>
                 <li><a href="https://www.facebook.com/allforkids" title="Facebook" target="_blank"><i class="fa fa-facebook fa-2x"></i></a><span style="background-color:#3b5998;"></span></li>
                 <li><a href="https://www.youtube.com/channel/UCyBCh0uRg_6b9prDNYJFm6g" title="Youtube" target="_blank"><i class="fa fa-youtube-play fa-2x"></i></a><span style="background-color:#b31217;"></span></li>
                 <li><a href="https://twitter.com/allforkids" title="Twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a><span style="background-color:#4099ff;"></span></li>
-
-                {#<li class="search">#}
-                    {#<a href="#" title="Search"></a><span></span>#}
-                {#</li>#}
-                {#<li>#}
-                    {#<form role="search" id="search-form" method="get" action="#">#}
-                        {#<input type="text" value="" name="s" id="s" />#}
-                        {#<input class="button medium button-style1" type="submit" id="search-submit" value="Search" />#}
-                    {#</form>#}
-                {#</li>#}
             </ul>
             <!-- .kids_social -->
-            <div class="kids_clear"></div>
+            <div class="kids_clear">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <h6 align="right">{{ app.user.username }}, est connecté</h6>
+                {% endif %}
+            </div>
 
             <div id="kids_logo_block" class="logo-position-left">
-                <a id="kids_logo_text" href={{ asset('bundles/TemplateFront/index.html') }}><img src={{ asset('images/logo/Logo1.png') }} alt="AllForKids" title="AllForKids | Bienvenue" /></a>
+                <a id="kids_logo_text" href={{ path('scolarite_homepage') }}><img src={{ asset('images/logo/Logo1.png') }} alt="AllForKids" title="AllForKids | Bienvenue" /></a>
             </div>
             <nav id="kids_main_nav" class="menu-position-right">
-                <div class="menu-button">
-                    <span class="menu-button-line"></span>
-                    <span class="menu-button-line"></span>
-                    <span class="menu-button-line"></span>
-                </div>
+                {#<div class="menu-button">#}
+                    {#<span class="menu-button-line"></span>#}
+                    {#<span class="menu-button-line"></span>#}
+                    {#<span class="menu-button-line"></span>#}
+                {#</div>#}
                 <ul id="menu-main" class="clearfix flexnav " data-breakpoint="800">
                     <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="{{ path('scolarite_homepage') }}">AllForKids</a></li>
-                    <li class="menu-item menu-item-has-children item-with-ul "><a href={{ asset('bundles/TemplateFront/page-features.html') }}>Scolarité</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/page-features.html') }}>Template Features</a></li>
-                            <li class="menu-item menu-item-has-children"><a href={{ asset('bundles/TemplateFront/content-elements.html') }}>Content Elements</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/page-grid.html') }}>Grids Showcase</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/content-elements.html') }}>Content Elements</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/page-video.html') }}>Video</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/typography.html') }}>Text and Headings</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/pricing-tables.html') }}>Pricing Tables</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item menu-item-has-children"><a href={{ asset('bundles/TemplateFront/full-width-page.html') }}>Santé</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/full-width-page.html') }}>Full Width Page</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/doble-sidebars.html') }}>Doble Sidebars</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/right-navigation.html') }}>Right Navigation</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/left-navigation.html') }}>Left Navigation</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/right-nav-sidebar.html') }}>Right Nav + Sidebar</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/left-nav-sidebar.html') }}>Left Nav + Sidebar</a></li>
-                            <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href={{ asset('bundles/TemplateFront/page-404.html') }}>404 Page</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-itemmenu-item-has-children"><a href={{ asset('bundles/TemplateFront/portfolio-full-width.html') }}>Divertissement</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children"><a href="#">Columns</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-1col.html') }}>Portfolio 1 Column</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-2col.html') }}>Portfolio 2 Columns</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-3col.html') }}>Portfolio 3 Columns</a></li>
-                                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-4col.html') }}>Portfolio 4 Columns</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-full-width.html') }}>Full-width page</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-right-sidebar.html') }}>Right Sidebar</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-left-sidebar.html') }}>Left Sidebar</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-double-sidebars.html') }}>Double Sidebars</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-gallery.html') }}>Gallery</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/portfolio-gallery-sidebar.html') }}>Gallery + Sidebar</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">Blog</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/blog-right-sidebar.html') }}>Right Sidebar</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/blog-left-sidebar.html') }}>Left Sidebar</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/blog-double-sidebars.html') }}>DoubleSidebars</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/blog-fullwidth.html') }}>Full Width</a></li>
+                    <li class="menu-item menu-item-has-children item-with-ul "><a href={{ path('sante_front') }}>Santé</a></li>
+                    <li class="menu-item menu-item-has-children"><a href="#">Scolarité</a></li>
+                    <li class="menu-itemmenu-item-has-children"><a href="#">HomeWork</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="#">BabySitter</a></li>
+                    <li class="menu-item">
+                        {#KH. insertion page de connexion#}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <a href="{{ path('fos_user_security_logout') }}">
+                                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                    </a>
+                        {% else %}
+                                <a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                        {% endif %}
 
-                        </ul>
                     </li>
-                    <li class="menu-item menu-item-has-children"><a href={{ asset('bundles/TemplateFront/shop.html') }}>Shop</a>
-                        <ul class="sub-menu">
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/shop-shortcodes.html') }}>Woo Shortcodes</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/shop-cart.html') }}>Cart</a></li>
-
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/shop-checkout.html') }}>Checkout</a></li>
-                            <li class="menu-item"><a href={{ asset('bundles/TemplateFront/shop-account.html') }}>My Account</a></li>
-                        </ul>
-                    </li>
-                    <li class="menu-item"><a href={{ asset('bundles/TemplateFront/page-contact.html') }}>Contact</a></li>
                 </ul>
             </nav>
             <!-- #kids_main_nav -->
+
         </div>
         <!--/ .l-page-width-->
     </header>
     <!--/ #kids_header-->
     <!-- HEADER END -->
-    <div class="bg-level-2-page-width-container ">
-        <div class="bg-level-2 first-part" id="bg-level-2"></div>
-        <div class="l-page-width">
-            <div class="kids_slider_bg img_slider">
-                <div class="kids_slider_wrapper">
-                    <div class="kids_slider_inner_wrapper">
-                        <div class="img-slider">
-                            <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
-                                <!-- START REVOLUTION SLIDER 4.6.5 fullwidth mode -->
-                                <div id="rev_slider_1_1" class="rev_slider fullwidthabanner">
-                                    <ul>
-                                        <!-- SLIDE  -->
-                                        <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                                            <!-- MAIN IMAGE -->
-                                            <img src={{ asset('bundles/TemplateFront/pic/slide-17.jpg') }} alt="slide-17" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                                            <!-- LAYERS -->
-                                            <!-- LAYER NR. 1 -->
-                                            <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">Responsive Design
-                                            </div>
-                                            <!-- LAYER NR. 2 -->
-                                            <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">All pages look identically great regardless of the device’s resolution and display size.
-                                            </div>
-                                        </li>
-                                        <!-- SLIDE  -->
-                                        <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                                            <!-- MAIN IMAGE -->
-                                            <img src={{ asset('bundles/TemplateFront/pic/slide-5.jpg') }} alt="slide-5" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                                            <!-- LAYERS -->
-                                            <!-- LAYER NR. 1 -->
-                                            <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Easy Color Management
-                                            </div>
-                                            <!-- LAYER NR. 2 -->
-                                            <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="4" data-endelementdelay="0.1" data-endspeed="300">With the help of our customization panel
-                                                you can easily select any color and preview the results.
-                                            </div>
-                                        </li>
-                                        <!-- SLIDE  -->
-                                        <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                                            <!-- MAIN IMAGE -->
-                                            <img src={{ asset('bundles/TemplateFront/pic/slide-47.jpg') }} alt="slide-47" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                                            <!-- LAYERS -->
-                                            <!-- LAYER NR. 1 -->
-                                            <div class="tp-caption kids-slider-header customin tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Shop pages included
-                                            </div>
-                                            <!-- LAYER NR. 2 -->
-                                            <div class="tp-caption kids-slider-header-alt customin tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">HappyKids includes all the needed page templates, widgets, cart and other shop-related content to represent your online store.
-                                            </div>
-                                        </li>
-                                        <!-- SLIDE  -->
-                                        <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                                            <!-- MAIN IMAGE -->
-                                            <img src={{ asset('bundles/TemplateFront/pic/slide-27.jpg') }} alt="slide-27" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                                            <!-- LAYERS -->
-                                            <!-- LAYER NR. 1 -->
-                                            <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Slider Revolution Inside
-                                            </div>
-                                            <!-- LAYER NR. 2 -->
-                                            <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="4" data-endelementdelay="0.1" data-endspeed="300">A very powerful image slier is bundled into this template. Create your slides and enjoy the result.
-                                            </div>
-                                        </li>
-                                        <!-- SLIDE  -->
-                                        <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
-                                            <!-- MAIN IMAGE -->
-                                            <img src={{ asset('bundles/TemplateFront/pic/slide-37.jpg') }} alt="slide-37" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
-                                            <!-- LAYERS -->
-                                            <!-- LAYER NR. 1 -->
-                                            <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Lifetime Support
-                                            </div>
-                                            <!-- LAYER NR. 2 -->
-                                            <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">We support our products as long as they are being sold. Be sure to get a fast, proffessional and reliable support from our staff.
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <div class="tp-bannertimer tp-bottom"></div>
-                                </div>
-                            </div>
-                            <!-- END REVOLUTION SLIDER -->
-                        </div>
-                        <!--/ #kids-slider-->
-                    </div>
-                    <!--/ .kids_slider_inner_wrapper-->
-                </div>
-                <!--/ .kids_slider_wrapper-->
-            </div>
-            <!--/ .kids_slider_bg-->
-        </div>
-        <!-- .l-page-width -->
-        <div class="bg-level-2 second-part" id="bg-level-2"></div>
-    </div>
+{#hafedh#}
+    {% block slide %}
+
+    {% endblock %}
 </div>
 </div>
 <!-- .bg-level-1 -->
+{% block front %}
+
+{% endblock %}
+    <!-- .l-page-width -->
+    <div class="bg-level-2 second-part" id="bg-level-2"></div>
+</div>
 <div id="kids_middle_container">
-    <!-- .content -->
+    {#<!-- .content -->#}
     <div class="kids_top_content">
         <div class="kids_top_content_middle homepage">
             <div class="l-page-width">
@@ -255,453 +143,453 @@
                         <div id="cws_benefits-5" class="widget widget_cws_benefits">
                             <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-2.png') }} alt /></div>
                             <div class="cws-widget-content benefits_widget">
-                                <h3 class="widget-title">Playground</h3>
-                                <section class="text_part">Ut wisi enim ad minim veniam, quis nostrud exerci tation corper suscipit lobortis nisl ut aliqup.</section>
-                                <a href={{ asset('bundles/TemplateFront/index79bf.html?page_id=169') }} class='cws_button' >More</a> </div>
+                                <h3 class="widget-title">Forum Santé</h3>
+                                <section class="text_part">Consultez et postez des sujets de discussion sur la santé de vos enfants. Calculez IMC de votre enfant.</section>
+                                <a href="#" class='cws_button' >Plus</a> </div>
                         </div>
                         <div id="cws_benefits-2" class="widget widget_cws_benefits">
-                            <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-1.png') }} alt /></div>
-                            <div class="cws-widget-content benefits_widget">
-                                <h3 class="widget-title">Entertainment</h3>
-                                <section class="text_part">Lorem ipsum dolor sit consectetur adipiscing elit. Sed venenatis mollis lac us a egestas.</section>
-                                <a href={{ asset('bundles/TemplateFront/indexb01a.html?page_id=226') }} class='cws_button'>More</a> </div>
-                        </div>
-                        <div id="cws_benefits-3" class="widget widget_cws_benefits">
                             <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-3.png') }} alt /></div>
                             <div class="cws-widget-content benefits_widget">
-                                <h3 class="widget-title">Environment</h3>
-                                <section class="text_part">Ut wisi enim ad minim veniam, quis nostrud exerci tation corper suscipit lobortis nisl.</section>
-                                <a href='#' class='cws_button '>More</a> </div>
+                                <h3 class="widget-title">Divertissement</h3>
+                                <section class="text_part">Donnez à votre enfant un aire de jeux sécurisé et sous contrôle.</section>
+                                <a href="#" class='cws_button'>Plus</a> </div>
+                        </div>
+                        <div id="cws_benefits-3" class="widget widget_cws_benefits">
+                            <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-1.png') }} alt /></div>
+                            <div class="cws-widget-content benefits_widget">
+                                <h3 class="widget-title">Educatif</h3>
+                                <section class="text_part">Trouvez des jeux éducatifs pour vos enfants.</section>
+                                <a href='#' class='cws_button '>Plus</a> </div>
                         </div>
                     </div>
                 </section>
             </div>
-            <div class="bottom-border"></div>
-        </div>
-        <!-- .kids_top_content_middle -->
-    </div>
+            {#<div class="bottom-border"></div>#}
+        {#</div>#}
+        {#<!-- .kids_top_content_middle -->#}
+    {#</div>#}
     <div class="bg-level-2-full-width-container kids_bottom_content">
         <div class="bg-level-2-page-width-container no-padding">
-            <section class="kids_bottom_content_container">
-                <!-- ***************** - START Image floating - *************** -->
-                <div class="page-content">
-                    <div class="container l-page-width">
-                        <div class="entry-container ">
-                            <main>
-                                <div class='grid-row clearfix'>
-                                    <div class='grid-col grid-col-12'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <div class="recent_projects ">
-                                                    <h3 class="section-title">Recent Projects</h3>
-                                                    <div class="projects_carousel clearfix" data-carousel-column="4">
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-1%402x.jpg') }}" title = "Project 1"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-1.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 1</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-2%402x.jpg') }}" title="Project 2"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-2.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 2</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-3%402x.jpg') }}" title="Project 3"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-3.jpg') }}"" alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 3</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-4%402x.jpg') }}" title="Project 4"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-4.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 4</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-6%402x.jpg') }}" title="Project 5"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-6.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 5</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-5%402x.jpg') }}" title="Project 6"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-5.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 6</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-7%402x.html') }}" title="Project 7"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-7.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="gallery-text">
-                                                                <div class="title">Project 7</div>
-                                                                <p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>
-                                                            </div>
-                                                            <div><a href="#" class="cws_button">View Project</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ .projects-carousel -->
-                                                </div>
-                                                <!--/ .work-carousel-->
-                                                <hr />
-                                                <p>&nbsp;</p>
-                                            </section>
-                                        </section>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <div class="recent_projects ">
-                                                    <h3 class="section-title">Recent Posts</h3>
-                                                    <div class="projects_carousel blog clearfix" data-carousel-column="2">
-                                                        <div class="iso-item">
-                                                            <article class="post-item">
-                                                                <div class="post-meta">
-                                                                    <div class="post-date">
-                                                                        <span class="day"> 3</span>
-                                                                        <span class="month">Jan.2015</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="post-entry">
-                                                                    <div class="content-wrapper alignleft">
-                                                                        <figure>
-                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href={{ asset('bundles/TemplateFront/pic/HappyFeet_1st4.jpg') }}><img class="pic" src={{ asset('bundles/TemplateFront/pic/185x185-img-1.jpg') }} alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="entry">
-                                                                        <div class="post-title">
-                                                                            <a href="#">Image Post</a>
-                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
-                                                                </div>
-                                                                <div class="post-footer">
-																		<span class="l-float-right"><a href="#" class="more-link cws_button">
-					Read more</a></span>
-                                                                    <div class="post_cats">
-                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>
-                                                                    </div>
-                                                                    <div class="post_tags">
-                                                                        <p><span>Tags:</span>
-                                                                            <a href="#"  title= "Tag" class="link">Blog</a></p>
-                                                                    </div>
-                                                                    <div class="kids_clear"></div>
-                                                                </div>
-                                                            </article>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <article class="post-item">
-                                                                <div class="post-meta">
-                                                                    <div class="post-date">
-                                                                        <span class="day"> 2</span>
-                                                                        <span class="month">Jan.2015</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="post-entry">
-                                                                    <div class="content-wrapper alignleft">
-                                                                        <figure>
-                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href={{ asset('bundles/TemplateFront/pic/LegoMovie_3rd4.jpg') }}><img class="pic" src="pic/185x185-img-2.jpg" alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="entry">
-                                                                        <div class="post-title">
-                                                                            <a href="#">Image Post</a>
-                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
-                                                                </div>
-                                                                <div class="post-footer">
-																		<span class="l-float-right"><a href="#" class="more-link cws_button">
-					Read more</a></span>
-                                                                    <div class="post_cats">
-                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>
-                                                                    </div>
-                                                                    <div class="post_tags">
-                                                                        <p><span>Tags:</span>
-                                                                            <a href="#" title="Tag" class="link">Blog</a></p>
-                                                                    </div>
-                                                                    <div class="kids_clear"></div>
-                                                                </div>
-                                                            </article>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <article class="post-item">
-                                                                <div class="post-meta">
-                                                                    <div class="post-date">
-                                                                        <span class="day"> 1</span>
-                                                                        <span class="month">Jan.2015</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="post-entry">
-                                                                    <div class="content-wrapper alignleft">
-                                                                        <figure>
-                                                                            <a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Video blog post" href={{ asset('bundles/TemplateFront/pic/Tangled_3rd5.jpg') }}><img class="pic" src={{ asset('bundles/TemplateFront/pic/185x185-img-3.jpg') }} alt="" /></a>
-                                                                        </figure>
-                                                                    </div>
-                                                                    <div class="entry">
-                                                                        <div class="post-title">
-                                                                            <a href="#">Video blog post</a>
-                                                                        </div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>
-                                                                </div>
-                                                                <div class="post-footer">
-																		<span class="l-float-right"><a href="#" class="more-link cws_button">
-					Read more</a></span>
-                                                                    <div class="post_cats">
-                                                                        <p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a>, <a class="link" href="#" title="View all posts in">test</a>, <a class="link" href="#" title="View all posts in">Video</a></p>
-                                                                    </div>
-                                                                    <div class="post_tags">
-                                                                        <p><span>Tags:</span>
-                                                                            <a href="#" title="Tag " class="link">Blog</a>, <a href="#" title="Tag" class="link">Post</a></p>
-                                                                    </div>
-                                                                    <div class="kids_clear"></div>
-                                                                </div>
-                                                            </article>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ .projects-carousel -->
-                                                </div>
-                                                <!--/ .work-carousel-->
-                                                <hr />
-                                            </section>
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class='grid-row clearfix'>
-                                    <div class='grid-col grid-col-12'>
-                                        <section class='cws-widget'>
-                                            <div class='widget-title'>About Happy Kids</div>
-                                            <section class='cws_widget_content'>
-                                                <p><img class="alignleft border size-thumbnail" src={{ asset('bundles/TemplateFront/pic/150x150-img-1.png') }} alt="content_img_1" width="150" height="150" />In ac sollicitudin sem. Proin congue blandit eros, eu volutpat leo maximus vitae. Nulla a velit ut augue pretium fringilla. In hac habitasse platea dictumst. Sed vitae sodales purus. Cras ultrices condimentum lectus, nec laoreet sapien tempus vel. Duis pretium ante purus, et faucibus turpis pellentesque eget. Curabitur ac blandit dolor. Maecenas facilisis eleifend massa ac commodo. Integer justo felis, finibus at faucibus eget, pulvinar a odio. Suspendisse potenti. Curabitur auctor tristique arcu et dapibus. Praesent risus metus, ultricies ac ante interdum, fringilla finibus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed nec varius enim. Aenean vitae ipsum pretium, elementum sapien at, tristique lacus. Nec laoreet sapien tempus vel. Duis pretium ante purus, et faucibus turpis pellentesque eget. Curabitur ac blandit dolor. Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit. Aliquam ipsum dui, porttitor id hendrerit nec, mollis ut odio.</p>
-                                            </section>
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class='grid-row clearfix margin-top-none'>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <ul>
-                                                    <li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>
-                                                    <li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>
-                                                    <li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>
-                                                </ul>
-                                            </section>
-                                        </section>
-                                    </div>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <ul>
-                                                    <li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>
-                                                    <li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>
-                                                    <li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>
-                                                </ul>
-                                            </section>
-                                        </section>
-                                    </div>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <ul>
-                                                    <li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>
-                                                    <li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>
-                                                    <li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>
-                                                </ul>
-                                            </section>
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class='grid-row clearfix margin-top-none margin-bottom-none'>
-                                    <div class='grid-col grid-col-12'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <hr />
-                                                <p>&nbsp;</p>
-                                            </section>
-                                        </section>
-                                    </div>
-                                </div>
-                                <div class='grid-row clearfix'>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <div class='shortcode_carousel' data-carousel-column="1">
-                                                    <div class='carousel_header clearfix'>
-                                                        <div class='widget-title'>Testimonials</div>
-                                                    </div>
-                                                    <div class='carousel_content'>
-                                                        <ul>
-                                                            <li>
-                                                                <div class="testimonial clearfix">
-                                                                    <div>
-                                                                        <img src={{ asset('bundles/TemplateFront/pic/100x100-img-1.jpg') }} alt />
-                                                                        <p>
-                                                                            Mauris volutpat mi sed odio finibus commodo. Integer egestas eu elit vitae mattis.Curabitur auctorhe ndrerit nec. </p>
-                                                                    </div>
-                                                                    <div class="author">
-                                                                        Jane Doe </div>
-                                                                </div>
-                                                                <div class="testimonial clearfix">
-                                                                    <div>
-                                                                        <img src={{ asset('bundles/TemplateFront/pic/100x100-img-2.jpg') }} alt />
-                                                                        <p>
-                                                                            Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit. </p>
-                                                                    </div>
-                                                                    <div class="author">
-                                                                        Jane Doe </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="testimonial clearfix">
-                                                                    <div>
-                                                                        <img src={{ asset('bundles/TemplateFront/pic/100x100-img-2.jpg') }} alt />
-                                                                        <p>
-                                                                            Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit.Aliquam ipsum dui. </p>
-                                                                    </div>
-                                                                    <div class="author">
-                                                                        Jane Doe </div>
-                                                                </div>
-                                                                <div class="testimonial clearfix">
-                                                                    <div>
-                                                                        <img src={{ asset('bundles/TemplateFront/pic/100x100-img-1.jpg') }} alt />
-                                                                        <p>
-                                                                            Mauris volutpat mi sed odio finibus commodo. Integer egestas eu elit vitae mattis.Curabitur auctor. </p>
-                                                                    </div>
-                                                                    <div class="author">
-                                                                        Jane Doe </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </section>
-                                    </div>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <div class="recent_projects ">
-                                                    <h3 class="section-title">Mini Gallery</h3>
-                                                    <div class="projects_carousel clearfix" data-carousel-column="1">
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="http://www.youtube.com/watch?v=HwXbtZXjbVE" title="Project 5"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-2.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/HappyFeet_4th5.jpg') }}" title="Project 4"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-3.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                        </div>
-                                                        <div class="iso-item">
-                                                            <div class="content-wrapper">
-                                                                <figure>
-                                                                    <a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/HappyFeet_3rd4.jpg') }}" title="Project 3"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-1.jpg') }} alt="" /> </a>
-                                                                </figure>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--/ .projects-carousel -->
-                                                </div>
-                                                <!--/ .work-carousel-->
-                                            </section>
-                                        </section>
-                                    </div>
-                                    <div class='grid-col grid-col-4'>
-                                        <section class='cws-widget'>
-                                            <section class='cws_widget_content'>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Integer sollicitudin</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="89" style="background-color:#ffdb5e;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Phasellus eleifend</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="69" style="background-color:#f2a1b0;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Fusce in magna</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="42" style="background-color:#3185cb;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Etiam a dignissim nisl</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="79" style="background-color:#8ddd67;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Morbi nec purus</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="55" style="background-color:#ff5c5c;"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="single_bar with_title">
-                                                    <div class="title">Hendrerit nec mollis</div>
-                                                    <div class="scale">
-                                                        <div class="progress" data-value="72" style="background-color:#8fc0ea;"></div>
-                                                    </div>
-                                                </div>
-                                            </section>
-                                        </section>
-                                    </div>
-                                </div>
-                                <!-- comments block -->
-                                <!-- //end comments block -->
-                            </main>
-                            <div class="kids_clear"></div>
-                        </div>
-                        <!-- .entry-container -->
-                    </div>
-                </div>
-                <!-- ***************** - END Image floating - *************** -->
-            </section>
-            <!-- .bottom_content_container -->
-        </div>
-        <div class="content_bottom_bg"></div>
-    </div>
+            {#<section class="kids_bottom_content_container">#}
+                {#<!-- ***************** - START Image floating - *************** -->#}
+                {#<div class="page-content">#}
+                    {#<div class="container l-page-width">#}
+                        {#<div class="entry-container ">#}
+                            {#<main>#}
+                                {#<div class='grid-row clearfix'>#}
+                                    {#<div class='grid-col grid-col-12'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<div class="recent_projects ">#}
+                                                    {#<h3 class="section-title">Recent Projects</h3>#}
+                                                    {#<div class="projects_carousel clearfix" data-carousel-column="4">#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-1%402x.jpg') }}" title = "Project 1"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-1.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 1</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-2%402x.jpg') }}" title="Project 2"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-2.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 2</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-3%402x.jpg') }}" title="Project 3"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-3.jpg') }}"" alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 3</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-4%402x.jpg') }}" title="Project 4"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-4.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 4</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-6%402x.jpg') }}" title="Project 5"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-6.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 5</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-5%402x.jpg') }}" title="Project 6"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-5.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 6</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/250x250-kos-7%402x.html') }}" title="Project 7"><img src={{ asset('bundles/TemplateFront/pic/250x250-kos-7.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                            {#<div class="gallery-text">#}
+                                                                {#<div class="title">Project 7</div>#}
+                                                                {#<p>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer </p>#}
+                                                            {#</div>#}
+                                                            {#<div><a href="#" class="cws_button">View Project</a></div>#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                    {#<!--/ .projects-carousel -->#}
+                                                {#</div>#}
+                                                {#<!--/ .work-carousel-->#}
+                                                {#<hr />#}
+                                                {#<p>&nbsp;</p>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<div class="recent_projects ">#}
+                                                    {#<h3 class="section-title">Recent Posts</h3>#}
+                                                    {#<div class="projects_carousel blog clearfix" data-carousel-column="2">#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<article class="post-item">#}
+                                                                {#<div class="post-meta">#}
+                                                                    {#<div class="post-date">#}
+                                                                        {#<span class="day"> 3</span>#}
+                                                                        {#<span class="month">Jan.2015</span>#}
+                                                                    {#</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-entry">#}
+                                                                    {#<div class="content-wrapper alignleft">#}
+                                                                        {#<figure>#}
+                                                                            {#<a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href={{ asset('bundles/TemplateFront/pic/HappyFeet_1st4.jpg') }}><img class="pic" src={{ asset('bundles/TemplateFront/pic/185x185-img-1.jpg') }} alt="" /></a>#}
+                                                                        {#</figure>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="entry">#}
+                                                                        {#<div class="post-title">#}
+                                                                            {#<a href="#">Image Post</a>#}
+                                                                        {#</div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-footer">#}
+																		{#<span class="l-float-right"><a href="#" class="more-link cws_button">#}
+					{#Read more</a></span>#}
+                                                                    {#<div class="post_cats">#}
+                                                                        {#<p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="post_tags">#}
+                                                                        {#<p><span>Tags:</span>#}
+                                                                            {#<a href="#"  title= "Tag" class="link">Blog</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="kids_clear"></div>#}
+                                                                {#</div>#}
+                                                            {#</article>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<article class="post-item">#}
+                                                                {#<div class="post-meta">#}
+                                                                    {#<div class="post-date">#}
+                                                                        {#<span class="day"> 2</span>#}
+                                                                        {#<span class="month">Jan.2015</span>#}
+                                                                    {#</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-entry">#}
+                                                                    {#<div class="content-wrapper alignleft">#}
+                                                                        {#<figure>#}
+                                                                            {#<a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Image Post" href={{ asset('bundles/TemplateFront/pic/LegoMovie_3rd4.jpg') }}><img class="pic" src="pic/185x185-img-2.jpg" alt="" /></a>#}
+                                                                        {#</figure>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="entry">#}
+                                                                        {#<div class="post-title">#}
+                                                                            {#<a href="#">Image Post</a>#}
+                                                                        {#</div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-footer">#}
+																		{#<span class="l-float-right"><a href="#" class="more-link cws_button">#}
+					{#Read more</a></span>#}
+                                                                    {#<div class="post_cats">#}
+                                                                        {#<p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="post_tags">#}
+                                                                        {#<p><span>Tags:</span>#}
+                                                                            {#<a href="#" title="Tag" class="link">Blog</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="kids_clear"></div>#}
+                                                                {#</div>#}
+                                                            {#</article>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<article class="post-item">#}
+                                                                {#<div class="post-meta">#}
+                                                                    {#<div class="post-date">#}
+                                                                        {#<span class="day"> 1</span>#}
+                                                                        {#<span class="month">Jan.2015</span>#}
+                                                                    {#</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-entry">#}
+                                                                    {#<div class="content-wrapper alignleft">#}
+                                                                        {#<figure>#}
+                                                                            {#<a data-rel="prettyPhoto[lt_posts]" class="prettyPhoto kids_picture" title="Video blog post" href={{ asset('bundles/TemplateFront/pic/Tangled_3rd5.jpg') }}><img class="pic" src={{ asset('bundles/TemplateFront/pic/185x185-img-3.jpg') }} alt="" /></a>#}
+                                                                        {#</figure>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="entry">#}
+                                                                        {#<div class="post-title">#}
+                                                                            {#<a href="#">Video blog post</a>#}
+                                                                        {#</div>Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magn aliquam erat volutpat. Ut wisi enim ad minim veniam ...</div>#}
+                                                                {#</div>#}
+                                                                {#<div class="post-footer">#}
+																		{#<span class="l-float-right"><a href="#" class="more-link cws_button">#}
+					{#Read more</a></span>#}
+                                                                    {#<div class="post_cats">#}
+                                                                        {#<p><span>Category:</span><a class="link" href="#" title="View all posts in">Image</a>, <a class="link" href="#" title="View all posts in">test</a>, <a class="link" href="#" title="View all posts in">Video</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="post_tags">#}
+                                                                        {#<p><span>Tags:</span>#}
+                                                                            {#<a href="#" title="Tag " class="link">Blog</a>, <a href="#" title="Tag" class="link">Post</a></p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="kids_clear"></div>#}
+                                                                {#</div>#}
+                                                            {#</article>#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                    {#<!--/ .projects-carousel -->#}
+                                                {#</div>#}
+                                                {#<!--/ .work-carousel-->#}
+                                                {#<hr />#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class='grid-row clearfix'>#}
+                                    {#<div class='grid-col grid-col-12'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<div class='widget-title'>About Happy Kids</div>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<p><img class="alignleft border size-thumbnail" src={{ asset('bundles/TemplateFront/pic/150x150-img-1.png') }} alt="content_img_1" width="150" height="150" />In ac sollicitudin sem. Proin congue blandit eros, eu volutpat leo maximus vitae. Nulla a velit ut augue pretium fringilla. In hac habitasse platea dictumst. Sed vitae sodales purus. Cras ultrices condimentum lectus, nec laoreet sapien tempus vel. Duis pretium ante purus, et faucibus turpis pellentesque eget. Curabitur ac blandit dolor. Maecenas facilisis eleifend massa ac commodo. Integer justo felis, finibus at faucibus eget, pulvinar a odio. Suspendisse potenti. Curabitur auctor tristique arcu et dapibus. Praesent risus metus, ultricies ac ante interdum, fringilla finibus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed nec varius enim. Aenean vitae ipsum pretium, elementum sapien at, tristique lacus. Nec laoreet sapien tempus vel. Duis pretium ante purus, et faucibus turpis pellentesque eget. Curabitur ac blandit dolor. Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit. Aliquam ipsum dui, porttitor id hendrerit nec, mollis ut odio.</p>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class='grid-row clearfix margin-top-none'>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<ul>#}
+                                                    {#<li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>#}
+                                                {#</ul>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<ul>#}
+                                                    {#<li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>#}
+                                                {#</ul>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<ul>#}
+                                                    {#<li><span style="text-decoration: underline;">Donec placerat lectus eu elit lobortis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Mauris vestibulum dui metus, quis</span></li>#}
+                                                    {#<li><span style="text-decoration: underline;">Fringilla libero gonec eget fusce</span></li>#}
+                                                {#</ul>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class='grid-row clearfix margin-top-none margin-bottom-none'>#}
+                                    {#<div class='grid-col grid-col-12'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<hr />#}
+                                                {#<p>&nbsp;</p>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<div class='grid-row clearfix'>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<div class='shortcode_carousel' data-carousel-column="1">#}
+                                                    {#<div class='carousel_header clearfix'>#}
+                                                        {#<div class='widget-title'>Testimonials</div>#}
+                                                    {#</div>#}
+                                                    {#<div class='carousel_content'>#}
+                                                        {#<ul>#}
+                                                            {#<li>#}
+                                                                {#<div class="testimonial clearfix">#}
+                                                                    {#<div>#}
+                                                                        {#<img src={{ asset('bundles/TemplateFront/pic/100x100-img-1.jpg') }} alt />#}
+                                                                        {#<p>#}
+                                                                            {#Mauris volutpat mi sed odio finibus commodo. Integer egestas eu elit vitae mattis.Curabitur auctorhe ndrerit nec. </p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="author">#}
+                                                                        {#Jane Doe </div>#}
+                                                                {#</div>#}
+                                                                {#<div class="testimonial clearfix">#}
+                                                                    {#<div>#}
+                                                                        {#<img src={{ asset('bundles/TemplateFront/pic/100x100-img-2.jpg') }} alt />#}
+                                                                        {#<p>#}
+                                                                            {#Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit. </p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="author">#}
+                                                                        {#Jane Doe </div>#}
+                                                                {#</div>#}
+                                                            {#</li>#}
+                                                            {#<li>#}
+                                                                {#<div class="testimonial clearfix">#}
+                                                                    {#<div>#}
+                                                                        {#<img src={{ asset('bundles/TemplateFront/pic/100x100-img-2.jpg') }} alt />#}
+                                                                        {#<p>#}
+                                                                            {#Maecenas facilisis eleifend massa ac commodo.Donec at ullamcorper lectus, quis fringilla velit.Aliquam ipsum dui. </p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="author">#}
+                                                                        {#Jane Doe </div>#}
+                                                                {#</div>#}
+                                                                {#<div class="testimonial clearfix">#}
+                                                                    {#<div>#}
+                                                                        {#<img src={{ asset('bundles/TemplateFront/pic/100x100-img-1.jpg') }} alt />#}
+                                                                        {#<p>#}
+                                                                            {#Mauris volutpat mi sed odio finibus commodo. Integer egestas eu elit vitae mattis.Curabitur auctor. </p>#}
+                                                                    {#</div>#}
+                                                                    {#<div class="author">#}
+                                                                        {#Jane Doe </div>#}
+                                                                {#</div>#}
+                                                            {#</li>#}
+                                                        {#</ul>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<div class="recent_projects ">#}
+                                                    {#<h3 class="section-title">Mini Gallery</h3>#}
+                                                    {#<div class="projects_carousel clearfix" data-carousel-column="1">#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="http://www.youtube.com/watch?v=HwXbtZXjbVE" title="Project 5"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-2.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/HappyFeet_4th5.jpg') }}" title="Project 4"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-3.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                        {#</div>#}
+                                                        {#<div class="iso-item">#}
+                                                            {#<div class="content-wrapper">#}
+                                                                {#<figure>#}
+                                                                    {#<a data-rel="prettyPhoto[rs_projects]" class="prettyPhoto kids_picture" href="{{ asset('bundles/TemplateFront/pic/HappyFeet_3rd4.jpg') }}" title="Project 3"><img src={{ asset('bundles/TemplateFront/pic/347x347-img-1.jpg') }} alt="" /> </a>#}
+                                                                {#</figure>#}
+                                                            {#</div>#}
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                    {#<!--/ .projects-carousel -->#}
+                                                {#</div>#}
+                                                {#<!--/ .work-carousel-->#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                    {#<div class='grid-col grid-col-4'>#}
+                                        {#<section class='cws-widget'>#}
+                                            {#<section class='cws_widget_content'>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Integer sollicitudin</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="89" style="background-color:#ffdb5e;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Phasellus eleifend</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="69" style="background-color:#f2a1b0;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Fusce in magna</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="42" style="background-color:#3185cb;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Etiam a dignissim nisl</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="79" style="background-color:#8ddd67;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Morbi nec purus</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="55" style="background-color:#ff5c5c;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                                {#<div class="single_bar with_title">#}
+                                                    {#<div class="title">Hendrerit nec mollis</div>#}
+                                                    {#<div class="scale">#}
+                                                        {#<div class="progress" data-value="72" style="background-color:#8fc0ea;"></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</section>#}
+                                        {#</section>#}
+                                    {#</div>#}
+                                {#</div>#}
+                                {#<!-- comments block -->#}
+                                {#<!-- //end comments block -->#}
+                            {#</main>#}
+                            {#<div class="kids_clear"></div>#}
+                        {#</div>#}
+                        {#<!-- .entry-container -->#}
+                    {#</div>#}
+                {#</div>#}
+                {#<!-- ***************** - END Image floating - *************** -->#}
+            {#</section>#}
+            {#<!-- .bottom_content_container -->#}
+        {#</div>#}
+        {#<div class="content_bottom_bg"></div>#}
+    {#</div>#}
 </div>
 <!-- .end_content -->
 <!-- FOOTER BEGIN -->
@@ -836,7 +724,7 @@
                 <li><a href="https://twitter.com/allforkids" title="Twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a><span style="background-color:#4099ff;"></span></li>
             </ul>
             <div class="widget widget_text">
-                <div class="textwidget">Copyrights @2015: Happy Kids - Children HTML Template</div>
+                <div class="textwidget">Copyrights @2018: Team One - Esprit</div>
             </div>
         </div>
     </div>
@@ -906,8 +794,10 @@
 <script type='text/javascript' src={{ asset('bundles/TemplateFront/js/jquery.isotope.min.js') }}></script>
 <script type='text/javascript' src='js/jquery.flexnav.min.js'></script>
 
-
-
+    </div>
+        </div>
+    </div>
+</div>
 </body>
 
 

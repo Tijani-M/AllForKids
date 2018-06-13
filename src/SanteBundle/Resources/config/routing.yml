@@ -6,6 +6,10 @@ sante_affichage:
     path:     /affichage
     defaults: { _controller: SanteBundle:Default:affichage }
 
+sante_front:
+    path:     /front
+    defaults: { _controller: SanteBundle:Default:front }
+
 sante_localite:
     resource: "@SanteBundle/Resources/config/routing/localite.yml"
     prefix:   /localite

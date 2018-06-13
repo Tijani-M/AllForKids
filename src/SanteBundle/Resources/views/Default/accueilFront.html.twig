@@ -1,0 +1,93 @@
+{% extends 'front.html.twig' %}
+
+{% block slide %}
+
+{#Slide#}
+    <div class="bg-level-2-page-width-container ">
+    <div class="bg-level-2 first-part" id="bg-level-2"></div>
+    <div class="l-page-width">
+        <div class="kids_slider_bg img_slider">
+            <div class="kids_slider_wrapper">
+                <div class="kids_slider_inner_wrapper">
+                    <div class="img-slider">
+                        <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+                            <!-- START REVOLUTION SLIDER 4.6.5 fullwidth mode -->
+                            <div id="rev_slider_1_1" class="rev_slider fullwidthabanner">
+                                <ul>
+                                    <!-- SLIDE  -->
+                                    {#<li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">#}
+                                    <!-- MAIN IMAGE -->
+                                    {#<img src={{ asset('bundles/TemplateFront/pic/slide-17.jpg') }} alt="slide-17" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">#}
+                                    <!-- LAYERS -->
+                                    <!-- LAYER NR. 1 -->
+                                    {#<div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">Responsive Design#}
+                                    {#</div>#}
+                                    <!-- LAYER NR. 2 -->
+                                    {#<div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">All pages look identically great regardless of the device’s resolution and display size.#}
+                                    {#</div>#}
+                                    {#</li>#}
+                                    <!-- SLIDE  -->
+                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+                                        <!-- MAIN IMAGE -->
+                                        {#<img src={{ asset('bundles/TemplateFront/pic/slide-5.jpg') }}#}
+                                        <img src={{ asset('images/slides/santé_3.jpg')}} alt="slide-5" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 1 -->
+                                        <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Santé
+                                        </div>
+                                        <!-- LAYER NR. 2 -->
+                                        <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="4" data-endelementdelay="0.1" data-endspeed="300">Trouvez votre médecin en simple click. Préservez la santé de votre enfant.
+                                        </div>
+                                    </li>
+                                    <!-- SLIDE  -->
+                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+                                    <!-- MAIN IMAGE -->
+                                    <img src={{ asset('images/slides/homework_1.jpg') }} alt="slide-47" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                    <!-- LAYERS -->
+                                    <!-- LAYER NR. 1 -->
+                                    <div class="tp-caption kids-slider-header customin tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">HomeWork
+                                    </div>
+                                    <!-- LAYER NR. 2 -->
+                                    <div class="tp-caption kids-slider-header-alt customin tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">Suivez votre enfant en toute tranquilité. Contrôlez les devoirs demandés par leurs enseignants.
+                                    </div>
+                                    </li>
+                                    <!-- SLIDE  -->
+                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+                                        <!-- MAIN IMAGE -->
+                                        <img src={{ asset('images/slides/scolarité_5.jpg') }} alt="slide-27" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 1 -->
+                                        <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">Scolarité
+                                        </div>
+                                        <!-- LAYER NR. 2 -->
+                                        <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="4" data-endelementdelay="0.1" data-endspeed="300">Soutenez votre enfant avec des documents de révision pour tous les niveaux.
+                                        </div>
+                                    </li>
+                                    <!-- SLIDE  -->
+                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
+                                        <!-- MAIN IMAGE -->
+                                        <img src={{ asset('images/slides/babysitting.jpg') }} alt="slide-37" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <!-- LAYERS -->
+                                        <!-- LAYER NR. 1 -->
+                                        <div class="tp-caption kids-slider-header customin fadeout tp-resizeme" data-x="7" data-y="300" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="200" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="300">BabySitting
+                                        </div>
+                                        <!-- LAYER NR. 2 -->
+                                        <div class="tp-caption kids-slider-header-alt customin fadeout tp-resizeme" data-x="7" data-y="357" data-customin="x:-90;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-speed="600" data-start="500" data-easing="Power3.easeInOut" data-splitin="none" data-splitout="none" data-elementdelay="2" data-endelementdelay="0.1" data-endspeed="300">Vous avez besoin de garder votre enfant en toute sécurité. Cherchez un BabySitter par ici.
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="tp-bannertimer tp-bottom"></div>
+                            </div>
+                        </div>
+                        <!-- END REVOLUTION SLIDER -->
+                    </div>
+                    <!--/ #kids-slider-->
+                </div>
+                <!--/ .kids_slider_inner_wrapper-->
+            </div>
+            <!--/ .kids_slider_wrapper-->
+        </div>
+        <!--/ .kids_slider_bg-->
+    </div>
+
+{% endblock %}
