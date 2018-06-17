@@ -1,9 +1,13 @@
 {% extends 'front.html.twig' %}
 
 {% block front %}
-
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <h1 align="center">Intégration métier Santé, réservation RDV en cours construction</h1>
-
+    {% else %}
+        <h4 align="center"> Veuillez vous connecter</br>
+    <a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+        </h4>
+{% endif %}
 {% endblock %}
 
 

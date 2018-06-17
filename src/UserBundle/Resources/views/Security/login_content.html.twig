@@ -93,7 +93,7 @@
                             <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                         </div>
 {#fin ajout1 #}
-                        <a class="reset_pass" href="#" > {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }} ?</a>
+                        <a class="reset_pass" href="{{ path("fos_user_resetting_request") }}" > {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }} ?</a>
                     </div>
 
                     <div class="clearfix"></div>

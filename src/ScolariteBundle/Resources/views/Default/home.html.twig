@@ -8,8 +8,12 @@
     {#<body>#}
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
         <div class="profile_pic" align="center">
-            <img src="{{ asset('images/users/img.jpg') }}" alt="..." height="20" class="img-circle profile_img">
-        </div>
+        {% if app.user.imageUser is empty %}
+            <img src="{{ asset('images/users/user.png') }}" alt="User" class="img-circle profile_img">
+        {% else %}
+            <img src="{{ asset('images/users/') }}{{ app.user.imageUser }}" alt="" class="img-circle profile_img">
+        {% endif %}
+            </div>
         <div class="profile_info">
             <h4 align="center">Bienvenue,</h4>
             <h2 align="center">{{ app.user.username }}</h2>
@@ -20,7 +24,7 @@
 
     {% else %}
         <div class="profile_pic" align="center">
-            <img src="{{ asset('images/logo/icon1.jpg') }}" alt="..." height="20" class="img-circle profile_img">
+            <img src="{{ asset('images/logo/icon1.jpg') }}" alt="" height="20" class="img-circle profile_img">
         </div>
             <h3 align="center">Veuillez vous connecter,</h3>
             <h4 align="center">

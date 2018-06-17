@@ -1,6 +1,6 @@
 {% extends 'front.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
-{% block front %}
+{% block slide %}
 <html>
 <head>
     <title>All For Kids | Créer un compte</title>
@@ -34,16 +34,19 @@
                 'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
             }) }}
             {{ form_widget(form.username, {
-                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre nom utilisateur"}
             }) }}
+            <small>{{ form_errors(form.username) }}</small>
         </div>
+
         <div class="item form-group">
             {{ form_label(form.email, null, {
                 'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
             }) }}
             {{ form_widget(form.email, {
-                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre adresse mail"}
             }) }}
+            <small>{{ form_errors(form.email) }}</small>
         </div>
 
         {% for passwordField in form.plainPassword %}
@@ -52,15 +55,75 @@
                     'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
                 }) }}
                 {{ form_widget(passwordField, {
-                    'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "both name(s) e.g Jon Doe"}
+                    'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre mot de passe"}
                 }) }}
+                <small>{{ form_errors(passwordField) }}</small>
             </div>
         {% endfor %}
+
+        <div class="item form-group">
+            {{ form_label(form.telephone, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.telephone, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.telephone) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.profession, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.profession, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12",'placeholder': "Indiquer votre profession"}
+            }) }}
+            <small>(facultatif)</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.nbEnfant, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.nbEnfant, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12",'placeholder': "Indiquer nb de vos enfants"}
+            }) }}
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.datenaissance, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.datenaissance, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.genre, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(form.genre) }}
+            </div>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.imageFileUser, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12'}
+            }) }}
+            {{ form_widget(form.imageFileUser, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12"}
+            }) }}
+            <small>(facultatif)</small>
+        </div>
+
         <div class="ln_solid"></div>
         <div class="form-group">
             <div class="col-md-6 col-md-offset-3">
                 <input class="btn btn-success" type="submit" value="{{ 'registration.submit'|trans }}"/>
-                <a href="{{ path('fos_user_security_login') }}" class="btn btn-warning" role="button" >Annuler</a>
+                <a href="{{ path('scolarite_homepage') }}" class="btn btn-warning" role="button" >Annuler</a>
+                {#<a href="{{ path('fos_user_security_login') }}" class="btn btn-warning" role="button" >Annuler</a>#}
                 {#<button type="submit" class="btn btn-primary">Cancel</button>#}
             </div>
         </div>
