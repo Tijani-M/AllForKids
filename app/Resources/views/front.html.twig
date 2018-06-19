@@ -112,7 +112,12 @@
             </div>
             <nav id="kids_main_nav" class="menu-position-right">
                 <ul id="menu-main" class="clearfix flexnav " data-breakpoint="800">
-                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="{{ path('scolarite_homepage') }}">AllForKids</a></li>
+                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('sante_homepage') }}">Administration</a></li>
+                        {% else %}
+                            <a href="{{ path('scolarite_homepage') }}">AllForKids</a></li>
+                        {% endif %}
                     <li class="menu-item menu-item-has-children item-with-ul "><a href={{ path('sante_front') }}>Santé</a></li>
                     <li class="menu-item menu-item-has-children"><a href="#">Scolarité</a></li>
                     <li class="menu-itemmenu-item-has-children"><a href="#">HomeWork</a></li>
