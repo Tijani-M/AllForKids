@@ -1,10 +1,10 @@
 esprit_api:
     resource: "@EspritApiBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /esprit
 
 baby_sitting:
     resource: "@BabySittingBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /baby
 sante:
     resource: "@SanteBundle/Resources/config/routing.yml"
     prefix:   /sante
