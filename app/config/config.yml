@@ -12,6 +12,7 @@ parameters:
     locale: fr
     app.path.urgence_images: /web/images/urgence
     app.path.convention_images: /web/images/convention
+    app.path.product_images: /web/images/publication
     app.path.users_images: /web/images/users
 
 
@@ -110,6 +111,11 @@ vich_uploader:
             uri_prefix: '%app.path.convention_images%'
             upload_destination:  '%kernel.root_dir%/../web/images/convention' #'%kernel.project_dir%/web/images/urgence'
             namer:
+                service: vich_uploader.namer_uniqid
+
+        product_images:
+            uri_prefix:         /images/publication
+            upload_destination: '%kernel.root_dir%/web/images/publication'
                 service: vich_uploader.namer_uniqid
 
         users_images:
