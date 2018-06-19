@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Statuts list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Discription</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for statut in statuts %}
+            <tr>
+                <td><a href="{{ path('statut_show', { 'id': statut.id }) }}">{{ statut.id }}</a></td>
+                <td>{{ statut.discription }}</td>
+                <td>{% if statut.updatedAt %}{{ statut.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('statut_show', { 'id': statut.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('statut_edit', { 'id': statut.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('statut_new') }}">Create a new statut</a>
+        </li>
+    </ul>
+{% endblock %}

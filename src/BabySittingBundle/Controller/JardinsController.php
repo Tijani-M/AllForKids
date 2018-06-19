@@ -33,7 +33,7 @@ class JardinsController extends Controller
      */
     public function newAction(Request $request)
     {
-        $jardin = new Jardin();
+        $jardin = new Jardins();
         $form = $this->createForm('BabySittingBundle\Form\JardinsType', $jardin);
         $form->handleRequest($request);
 

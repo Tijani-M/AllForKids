@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Statut</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ statut.id }}</td>
+            </tr>
+            <tr>
+                <th>Discription</th>
+                <td>{{ statut.discription }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if statut.updatedAt %}{{ statut.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('statut_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('statut_edit', { 'id': statut.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

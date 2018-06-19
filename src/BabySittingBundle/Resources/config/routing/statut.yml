@@ -1,0 +1,24 @@
+statut_index:
+    path:     /
+    defaults: { _controller: "BabySittingBundle:Statut:index" }
+    methods:  GET
+
+statut_show:
+    path:     /{id}/show
+    defaults: { _controller: "BabySittingBundle:Statut:show" }
+    methods:  GET
+
+statut_new:
+    path:     /new
+    defaults: { _controller: "BabySittingBundle:Statut:new" }
+    methods:  [GET, POST]
+
+statut_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BabySittingBundle:Statut:edit" }
+    methods:  [GET, POST]
+
+statut_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BabySittingBundle:Statut:delete" }
+    methods:  DELETE

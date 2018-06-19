@@ -43,33 +43,6 @@ class Jardins
     private $adresse;
 
     /**
-     * @ORM\Column(type="string",length=1000)
-     */
-    private $lien;
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @var string
-     */
-    private $image;
-
-    /**
-     * @Vich\UploadableField(mapping="urgence_images", fileNameProperty="image")
-     * @var File
-     */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
-     */
-    private $updatedAt;
-
-    /**
-     * @Assert\DateTime()
-     */
-    private $datePub;
-
-    /**
      * @return mixed
      */
     public function getId()
@@ -150,38 +123,6 @@ class Jardins
     }
 
     /**
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @param string $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return File
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param File $imageFile
-     */
-    public function setImageFile($imageFile)
-    {
-        $this->imageFile = $imageFile;
-    }
-
-    /**
      * @return \DateTime
      */
     public function getUpdatedAt()
@@ -198,22 +139,66 @@ class Jardins
     }
 
     /**
-     * @return mixed
+     * @ORM\Column(type="string",length=1000)
      */
-    public function getDatePub()
-    {
-        return $this->datePub;
-    }
+    private $lien;
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @var string
+     */
+    private $image;
 
     /**
-     * @param mixed $datePub
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
+     * @var File
      */
-    public function setDatePub($datePub)
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    // ...
+
+    public function setImageFile(File $image = null)
     {
-        $this->datePub = $datePub;
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
     }
 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
 
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function _toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->getUpdatedAt();
+    }
 
 
 }

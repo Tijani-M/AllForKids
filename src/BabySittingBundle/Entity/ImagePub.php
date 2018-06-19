@@ -3,9 +3,13 @@ namespace BabySittingBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="image_pub")
  * @Vich\Uploadable
  *
  */
@@ -25,16 +29,14 @@ class ImagePub
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="adresse_image", fileNameProperty="imageName")
-     *
-     * @var File
+     * @Assert\File(maxSize="1200k",mimeTypes={"image/png", "image/jpeg", "image/pjpeg"})
+     * @Vich\UploadableField(mapping="directoy_images", fileNameProperty="imageName")
+     * @var File $imageFile
      */
     private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
      * @var string
      */
     private $imageName;
@@ -120,7 +122,7 @@ class ImagePub
      *
      * @param \DateTime $updatedAt
      *
-     * @return ImageLieu
+     * @return ImageName
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -138,4 +140,6 @@ class ImagePub
     {
         return $this->updatedAt;
     }
+
+
 }

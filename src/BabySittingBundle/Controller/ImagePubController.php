@@ -5,6 +5,9 @@ namespace BabySittingBundle\Controller;
 use BabySittingBundle\Entity\ImagePub;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+
 
 /**
  * Imagepub controller.
@@ -39,6 +42,8 @@ class ImagePubController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $helper = $this->container->get('vich_uploader.templating.helper.uploader_helper');
+            $path = $helper->asset($imagePub, 'imageFile');
             $em->persist($imagePub);
             $em->flush();
 

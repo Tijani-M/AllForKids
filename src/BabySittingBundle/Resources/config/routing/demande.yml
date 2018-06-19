@@ -18,6 +18,11 @@ demande_edit:
     defaults: { _controller: "BabySittingBundle:Demande:edit" }
     methods:  [GET, POST]
 
+demande_search:
+    path:     /search
+    defaults: { _controller: "BabySittingBundle:Demande:search" }
+    methods:  [GET, POST]
+
 demande_delete:
     path:     /{id}/delete
     defaults: { _controller: "BabySittingBundle:Demande:delete" }

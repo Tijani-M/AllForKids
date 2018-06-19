@@ -14,10 +14,17 @@ baby_sitting_imagepub:
         resource: "@BabySittingBundle/Resources/config/routing/imagepub.yml"
         prefix:   /imagepub
 
+
 baby_sitting_localjardin:
         resource: "@BabySittingBundle/Resources/config/routing/localjardin.yml"
         prefix:   /localjardin
 
+baby_sitting_statut:
+        resource: "@BabySittingBundle/Resources/config/routing/statut.yml"
+        prefix:   /statut
+
 baby_sitting_homepage:
     path:     /
     defaults: { _controller: BabySittingBundle:Default:index }
+
+

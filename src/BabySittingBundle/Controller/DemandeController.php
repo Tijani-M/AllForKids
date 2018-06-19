@@ -3,6 +3,7 @@
 namespace BabySittingBundle\Controller;
 
 use BabySittingBundle\Entity\Demande;
+use BabySittingBundle\Form\DemandeSearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -104,6 +105,27 @@ class DemandeController extends Controller
         }
 
         return $this->redirectToRoute('demande_index');
+    }
+
+    public function searchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $demande = $em->getRepository('BabySittingBundle:Demande')->findAll();
+        $form = $this->createForm(DemandeSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $add = $request->request->get("demande_search")["adresse"];
+            $adr = $em->getRepository('BabySittingBundle:TypePara')->find($add);
+
+            $adress = $this
+                ->getDoctrine()
+                ->getRepository('BabySittingBundle:Demande')
+                ->recherche($adr);
+        }
+        return $this->render('demande/search.html.twig', array(
+            'form' => $form->createView(),
+            "adresses" => $adress
+        ));
     }
 
     /**
