@@ -1,0 +1,83 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Jardins</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+                <div class="row">
+
+                    <p>Jardins gallery</p>
+
+                    <div class="col-md-55">
+                        <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 100%; display: block;"
+                                     src="{{ asset('images/publication/') }}{{ jardin.image }}" alt="image">
+
+
+                                <div class="mask">
+                                    <p>{{ jardin.id  }}</p>
+
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <p>{{ jardin.nom }}</p>
+                                <p>{{ jardin.tel }}</p>
+                                <p>{{ jardin.adresse }}</p>
+                                <p>{{ jardin.lien }}</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div></div>
+
+
+
+
+        <div class="x_panel" align="auto">
+            <table id="datatable" class="table table-striped table-bordered">
+                <tbody>
+                <tr>
+                    <th>Updatedat</th>
+                    <td>{% if jardin.updatedAt %}{{ jardin.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <ul>
+                <li>
+                    <a href="{{ path('jardins_index') }}">Back to the list</a>
+                </li>
+                <li>
+                    <a href="{{ path('jardins_edit', { 'id': jardin.id }) }}">Edit</a>
+                </li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
+
+        </div>
+
+
+{% endblock %}

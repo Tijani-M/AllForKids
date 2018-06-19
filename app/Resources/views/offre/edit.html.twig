@@ -1,0 +1,135 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+    <div class="title_left">
+        <h1 align="center"> Mise a jour des Offres </h1>
+    </div>
+<div class="x_content dashboard_graph">
+    <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    {{ form_start(edit_form) }}
+
+        <div class="form-group">
+            {{ form_label(edit_form.Nom, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.Nom, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.Prenom, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.Prenom, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.discription, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.discription, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.tel, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.tel) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.adresse, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.adresse) }}
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            {{ form_label(edit_form.heureD, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.heureD) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.heureF, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.heureF) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.prix, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.prix) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.enfant, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.enfant) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.imageFile, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.imageFile) }}
+            </div>
+        </div>
+
+</div>
+</div>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('offre_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+        <li>{{ form_widget(edit_form) }}
+            <input type="submit" value="Edit" />
+            {{ form_end(edit_form) }}
+        </li>
+    </ul>
+{% endblock %}

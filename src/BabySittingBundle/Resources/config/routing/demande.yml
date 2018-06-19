@@ -1,0 +1,29 @@
+demande_index:
+    path:     /
+    defaults: { _controller: "BabySittingBundle:Demande:index" }
+    methods:  GET
+
+demande_show:
+    path:     /{id}/show
+    defaults: { _controller: "BabySittingBundle:Demande:show" }
+    methods:  GET
+
+demande_new:
+    path:     /new
+    defaults: { _controller: "BabySittingBundle:Demande:new" }
+    methods:  [GET, POST]
+
+demande_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BabySittingBundle:Demande:edit" }
+    methods:  [GET, POST]
+
+demande_search:
+    path:     /search
+    defaults: { _controller: "BabySittingBundle:Demande:search" }
+    methods:  [GET, POST]
+
+demande_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BabySittingBundle:Demande:delete" }
+    methods:  DELETE

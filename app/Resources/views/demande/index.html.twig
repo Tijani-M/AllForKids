@@ -1,0 +1,69 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+
+<div class="title_left">
+    <h1 align="center">Liste Des Demandes</h1>
+</div>
+
+
+<div class="x_panel" align="auto">
+    <div class="clearfix">
+
+        <div>
+            <h2><u><a href="{{ path('demande_new') }}"><i class="fa fa-save"></i> Créer une demande</a>
+                </u>
+            </h2>
+        </div>
+
+
+
+        <div align="left">
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        {% for demande in demandes %}
+            <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                <div class="well profile_view">
+                    <div class="col-sm-12">
+
+                        <h4 class="brief"><i>Demande {{ demande.id }} </i></h4>
+                        <div class="left col-xs-7">
+                            <h2>{{ demande.Nom }} {{ demande.Prenom }}</h2>
+                            <p><strong>Demande: </strong> {{ demande.discription }}</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-building"></i> Address: {{ demande.adresse }} </li>
+                                <li><i class="fa fa-phone"></i> Phone :{{ demande.tel }} </li>
+                            </ul>
+                        </div>
+                        <div class="right col-xs-5 text-center">
+                            <img src="images/user.png" alt="" class="img-circle img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 bottom text-center">
+                        <div class="col-xs-12 col-sm-6 emphasis">
+                            <p class="ratings">
+                                <a>4.0</a>
+                                <a href="#"><span class="fa fa-star"></span></a>
+                                <a href="#"><span class="fa fa-star"></span></a>
+                                <a href="#"><span class="fa fa-star"></span></a>
+                                <a href="#"><span class="fa fa-star"></span></a>
+                                <a href="#"><span class="fa fa-star-o"></span></a>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 emphasis">
+
+                            <a href="{{ path('demande_show', { 'id': demande.id }) }}">View Profile
+                                <button type="button" class="btn btn-primary btn-xs">
+                                    <i class="fa fa-user"> </i>
+                                </button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

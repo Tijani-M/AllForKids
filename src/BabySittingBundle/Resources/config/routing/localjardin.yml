@@ -1,0 +1,29 @@
+localjardin_index:
+    path:     /
+    defaults: { _controller: "BabySittingBundle:localJardin:index" }
+    methods:  GET
+
+localjardin_show:
+    path:     /{id}/show
+    defaults: { _controller: "BabySittingBundle:localJardin:show" }
+    methods:  GET
+
+localjardin_new:
+    path:     /new
+    defaults: { _controller: "BabySittingBundle:localJardin:new" }
+    methods:  [GET, POST]
+
+localjardin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BabySittingBundle:localJardin:edit" }
+    methods:  [GET, POST]
+
+localjardin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BabySittingBundle:localJardin:delete" }
+    methods:  DELETE
+
+localjardin_map:
+    path:     /map
+    defaults: { _controller: "BabySittingBundle:localJardin:map" }
+    methods:  GET

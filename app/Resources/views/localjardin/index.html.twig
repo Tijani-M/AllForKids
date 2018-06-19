@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Localjardins list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Adresse</th>
+                <th>Tel</th>
+                <th>Siteweb</th>
+                <th>Gps</th>
+                <th>Valide</th>
+                <th>Dateajout</th>
+                <th>Datevalidation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for localJardin in localJardins %}
+            <tr>
+                <td><a href="{{ path('localjardin_show', { 'id': localJardin.id }) }}">{{ localJardin.id }}</a></td>
+                <td>{{ localJardin.nom }}</td>
+                <td>{{ localJardin.description }}</td>
+                <td>{{ localJardin.adresse }}</td>
+                <td>{{ localJardin.tel }}</td>
+                <td>{{ localJardin.siteWeb }}</td>
+                <td>{{ localJardin.gps }}</td>
+                <td>{% if localJardin.valide %}Yes{% else %}No{% endif %}</td>
+                <td>{% if localJardin.dateAjout %}{{ localJardin.dateAjout|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if localJardin.dateValidation %}{{ localJardin.dateValidation|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('localjardin_show', { 'id': localJardin.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('localjardin_edit', { 'id': localJardin.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('localjardin_new') }}">Create a new localJardin</a>
+        </li>
+    </ul>
+{% endblock %}

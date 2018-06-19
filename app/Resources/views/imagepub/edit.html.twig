@@ -1,0 +1,72 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Imagepub edit</h2>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+<div class="x_content dashboard_graph">
+    <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+        {{ form_start(edit_form) }}
+
+        <div class="form-group">
+            {{ form_label(edit_form.description, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.description, {
+                    'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                }) }}
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form_label(edit_form.imageFile, null, {
+                'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+            }) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                {{ form_widget(edit_form.imageFile) }}
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(edit_form) }}
+        </div>
+
+
+
+    </div>
+
+    <div class="ln_solid">
+        <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" align="centre">
+                <input class="btn btn-primary" type="submit" value="Edit"/>
+
+        {{ form_end(edit_form) }}
+
+        {{ form_start(delete_form) }}
+
+            <input class="btn btn-primary" type="submit" value="Delete"/>
+
+    {{ form_end(delete_form) }}
+
+            </div>
+        </div>
+    <ul>
+        <li>
+            <a href="{{ path('imagepub_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+
+    </div>
+</div>
+
+{% endblock %}

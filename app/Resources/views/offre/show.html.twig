@@ -1,0 +1,76 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <div class="title_left">
+        <h1 align="center">Offre de  {{ offre.Nom }} {{ offre.Prenom }} </h1>
+    </div>
+<div class="x_panel" align="auto">
+    <table id="datatable" class="table table-striped table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ offre.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ offre.Prenom }}</td>
+            </tr>
+            <tr>
+                <th>Discription</th>
+                <td>{{ offre.discription }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ offre.tel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ offre.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Heured</th>
+                <td>{{ offre.heureD }}</td>
+            </tr>
+            <tr>
+                <th>Heuref</th>
+                <td>{{ offre.heureF }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ offre.prix }}</td>
+            </tr>
+            <tr>
+                <th>Enfant</th>
+                <td>{{ offre.enfant }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ offre.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if offre.updatedAt %}{{ offre.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offre_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('offre_edit', { 'id': offre.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+</div>
+{% endblock %}
