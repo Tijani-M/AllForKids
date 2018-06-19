@@ -1,0 +1,46 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+    <div class="title_left">
+        <h1 align="center">Liste des Rendez-Vous Santé</h1>
+    </div>
+
+<div class="x_panel" align="auto">
+
+    <div align="left">
+        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+    </div>
+    <div class="x_content">
+        <table id="datatable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Professionnel</th>
+                <th>Patient</th>
+                <th>Date Rendez-Vous</th>
+                <th>Durée</th>
+                <th>RDV Validé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rDVSante in rDVSantes %}
+            <tr>
+                <td><a href="{{ path('rdvsante_show', { 'idRdv': rDVSante.idRdv }) }}"><i class="fa fa-eye"></i> <u>{{ rDVSante.idRdv }}</u></a></td>
+                <td>{{ rDVSante.professionnel }}</td>
+                <td>{{ rDVSante.patient }}</td>
+                <td>{% if rDVSante.dateRDV %}{{ rDVSante.dateRDV|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ rDVSante.duree }} min</td>
+                <td>{% if rDVSante.isValidated %}Oui{% else %}Non{% endif %}</td>
+                <td>
+                            <a href="{{ path('rdvsante_edit', { 'idRdv': rDVSante.idRdv }) }}"><i class="fa fa-edit"></i> Modifier
+                                </br><i class="fa fa-trash"></i> Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+{% endblock %}

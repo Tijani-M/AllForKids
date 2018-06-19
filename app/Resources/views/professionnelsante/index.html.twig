@@ -1,0 +1,50 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+
+    <div class="title_left">
+        <h1 align="center">Liste des Professionnels Santé</h1>
+    </div>
+
+    <div class="x_panel" align="auto">
+
+        <div align="left">
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <div class="x_content">
+            <table id="datatable" class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Localité</th>
+                    <th>Adresse</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Tarif</th>
+                    <th>Convention</th>
+                    <th>Actions</th>
+                </thead>
+                <tbody>
+                {% for professionnelSante in professionnelSantes %}
+                    <tr>
+                        <td><a href="{{ path('professionnelsante_show', { 'idPro': professionnelSante.idPro }) }}"><i class="fa fa-eye"></i> <u>{{ professionnelSante.idPro }}</u></a></td>
+                        <td>{{ professionnelSante.username }}</td>
+                        <td>{{ professionnelSante.localite }}</td>
+                        <td>{{ professionnelSante.adresse }}</td>
+                        <td>{{ professionnelSante.telephone }}</td>
+                        <td>{{ professionnelSante.email }}</td>
+                        <td>{{ professionnelSante.tarif }} D.T</td>
+                        <td>{{ professionnelSante.Convention }}</td>
+                        <td>
+                                    <a href="{{ path('professionnelsante_edit', { 'idPro': professionnelSante.idPro }) }}"><i class="fa fa-edit"></i> Modifier
+                                        </br><i class="fa fa-trash"></i> Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

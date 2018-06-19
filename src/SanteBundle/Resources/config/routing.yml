@@ -14,10 +14,6 @@ sante_localite:
     resource: "@SanteBundle/Resources/config/routing/localite.yml"
     prefix:   /localite
 
-sante_note:
-    resource: "@SanteBundle/Resources/config/routing/note.yml"
-    prefix:   /note
-
 sante_gouvernorat:
     resource: "@SanteBundle/Resources/config/routing/gouvernorat.yml"
     prefix:   /gouvernorat
@@ -37,3 +33,11 @@ sante_specialite:
 sante_categorieprofessionnel:
     resource: "@SanteBundle/Resources/config/routing/categorieprofessionnel.yml"
     prefix:   /categorieprofessionnel
+
+sante_rdvsante:
+    resource: "@SanteBundle/Resources/config/routing/rdvsante.yml"
+    prefix:   /rdvsante
+
+sante_professionnelsante:
+    resource: "@SanteBundle/Resources/config/routing/professionnelsante.yml"
+    prefix:   /professionnelsante

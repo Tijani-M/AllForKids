@@ -2,15 +2,13 @@
 /**
  * Created by PhpStorm.
  * User: G534616
- * Date: 11/04/2018
- * Time: 00:32
+ * Date: 17/06/2018
+ * Time: 23:00
  */
-
 namespace SanteBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class NoteRepository extends EntityRepository
+class RDVSanteRepository extends EntityRepository
 {
-
 }

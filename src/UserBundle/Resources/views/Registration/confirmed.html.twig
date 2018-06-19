@@ -1,21 +1,21 @@
 {% extends 'front.html.twig' %}
-{#{% extends "@FOSUser/layout.html.twig" %}#}
 
 {% trans_default_domain 'FOSUserBundle' %}
 {% block front %}
     <div class="alert alert-success" align="center">
     {% block fos_user_content %}
         <h2 class="alert alert-success" align="center" >{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h2>
-        <div class="profile_pic" align="center">
-            {% if app.user.imageUser is empty %}
-                <img src="{{ asset('images/users/user.png') }}" alt="User" class="img-circle profile_img">
-            {% else %}
-                <img src="{{ asset('images/users/') }}{{ app.user.imageUser }}" alt="" class="img-circle profile_img">
-            {% endif %}
-        </div>
-        {% if targetUrl %}
-            <h2><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></h2>
-        {% endif %}
-        </div>
+        {#<div class="profile_pic" align="center">#}
+            {#{% if app.user.imageUser is empty %}#}
+                {#<img src="{{ asset('images/users/user.png') }}" alt="User" class="img-circle profile_img">#}
+            {#{% else %}#}
+                {#<img src="{{ asset('images/users/') }}{{ app.user.imageUser }}" alt="" class="img-circle profile_img">#}
+            {#{% endif %}#}
+        {#</div>#}
+        {#{% if targetUrl %}#}
+            {#<h2><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></h2>#}
+        {#{% endif %}#}
+        {#</div>#}
     {% endblock fos_user_content %}
+    </div>
 {% endblock %}

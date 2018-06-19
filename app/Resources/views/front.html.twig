@@ -25,6 +25,15 @@
     <script type='text/javascript' src={{ asset('bundles/TemplateFront/tuner/js/scripts.js') }}></script>
     <script type="text/javascript" src={{ asset('bundles/TemplateFront/revslider/jquery.themepunch.revolution.min.js')}}></script>
     <script type="text/javascript" src={{ asset('bundles/TemplateFront/revslider/jquery.themepunch.tools.min.js') }}></script>
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css') }}"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css') }}"
+          rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css') }}" rel="stylesheet">
+
 </head>
 
 
@@ -87,11 +96,12 @@
             <!-- .kids_social -->
             <div class="kids_clear">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <h6 align="right">{{ app.user.username }}, est connecté</h6>
+                    <h4 align="right">{{ app.user.username }}, est connecté</h4>
                     {% else %}
                         <h5 align="right">
-                            <a href="{{ path('fos_user_registration_register') }}">
-                                {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-default btn-sm">
+                                {{ 'layout.register'|trans({}, 'FOSUserBundle') }} Utilisateur<br>
+                                <a href="{{ path('professionnelsante_new') }}" class="btn btn-default btn-sm" role="button">Inscription Professionnel</a>
                             </a>
                         </h5>
                 {% endif %}
@@ -101,11 +111,6 @@
                 <a id="kids_logo_text" href={{ path('scolarite_homepage') }}><img src={{ asset('images/logo/Logo1.png') }} alt="AllForKids" title="AllForKids | Bienvenue" /></a>
             </div>
             <nav id="kids_main_nav" class="menu-position-right">
-                {#<div class="menu-button">#}
-                    {#<span class="menu-button-line"></span>#}
-                    {#<span class="menu-button-line"></span>#}
-                    {#<span class="menu-button-line"></span>#}
-                {#</div>#}
                 <ul id="menu-main" class="clearfix flexnav " data-breakpoint="800">
                     <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item"><a href="{{ path('scolarite_homepage') }}">AllForKids</a></li>
                     <li class="menu-item menu-item-has-children item-with-ul "><a href={{ path('sante_front') }}>Santé</a></li>
