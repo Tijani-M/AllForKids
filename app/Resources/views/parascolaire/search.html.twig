@@ -58,7 +58,9 @@
                         <td>{{ parascolaire.matiere }}</td>
                         <td>{% if parascolaire.dateAjout %}{{ parascolaire.dateAjout|date('Y-m-d') }}{% endif %}</td>
                         <td>
-                            <a href="{{ path('parascolaire_edit', { 'id': parascolaire.id }) }}">modifier/supprimer</a>
+                            <a href="{{ path('parascolaire_edit', { 'id': parascolaire.id }) }}">
+                                <i class="fa fa-edit"></i><i class="fa fa-trash"></i> Modifier
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

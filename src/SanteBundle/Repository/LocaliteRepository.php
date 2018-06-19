@@ -13,5 +13,13 @@ use Doctrine\ORM\EntityRepository;
 
 class LocaliteRepository extends EntityRepository
 {
+    public function findByGouv($idGouvernorat){
 
+        $qb=$this->createQueryBuilder("p")
+            ->select("p")
+            ->where("p.gouvernorat=:gouv")
+            ->setParameter("gouv",$idGouvernorat);
+
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,29 @@
+professionnelsante_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:index" }
+    methods:  GET
+
+professionnelsante_show:
+    path:     /{idPro}/show
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:show" }
+    methods:  GET
+
+professionnelsante_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:new" }
+    methods:  [GET, POST]
+
+professionnelsante_edit:
+    path:     /{idPro}/edit
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:edit" }
+    methods:  [GET, POST]
+
+professionnelsante_delete:
+    path:     /{idPro}/delete
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:delete" }
+    methods:  DELETE
+
+professionnelsante_confirmed:
+    path:     /{idPro}/confirmed
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:confirmed" }
+    methods:  GET

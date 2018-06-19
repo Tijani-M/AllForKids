@@ -1,7 +1,7 @@
 localite_index:
     path:     /
     defaults: { _controller: "SanteBundle:Localite:index" }
-    methods:  GET
+    methods:  [GET, POST]
 
 localite_show:
     path:     /{idLocalite}/show
@@ -22,3 +22,8 @@ localite_delete:
     path:     /{idLocalite}/delete
     defaults: { _controller: "SanteBundle:Localite:delete" }
     methods:  DELETE
+
+localite_search:
+    path:     /search
+    defaults: { _controller: "SanteBundle:Localite:index" }
+    methods:  [GET, POST]

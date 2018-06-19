@@ -1,0 +1,174 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <div class="title_left">
+        <h1 align="center">Gestion des Professionnels Santé</h1>
+    </div>
+
+<div class="x_panel" align="auto">
+    <div class="x_title">
+        <div class="clearfix">
+            <div>
+                <h2 align="center"><u>Modification / Suppression Professionnel</u> :</h2>
+            </div>
+            <ul class="nav navbar-right ">
+                <a href="{{ path('professionnelsante_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="x_content dashboard_graph">
+        <div id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+    {{ form_start(edit_form) }}
+
+            <div class="form-group">
+                {{ form_label(edit_form.username, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.username, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.email, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.email, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.telephone, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.telephone, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.adresse, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.adresse, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.localite, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.localite, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.gouvernorat, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.gouvernorat, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.gps, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.gps, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.Specialite, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.Specialite, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.Convention, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.Convention, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.CategorieProfessionnel, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.CategorieProfessionnel, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.tarif, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.tarif, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(edit_form.plainPassword, null, {
+                    'label_attr': {'class': 'control-label col-md-3 col-sm-3 col-xs-12'}
+                }) }}
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    {{ form_widget(edit_form.plainPassword, {
+                        'attr': {'class': 'form-control col-md-7 col-xs-12'}
+                    }) }}
+                </div>
+            </div>
+
+            <div class="ln_solid"></div>
+            <div class="form-group">
+                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" align="center">
+                    <input class="btn btn-primary" type="submit" value="Modifier"/>
+                </div>
+            </div>
+    {{ form_end(edit_form) }}
+
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3" align="center">
+                {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Supprimer">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+{% endblock %}

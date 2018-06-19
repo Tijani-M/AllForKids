@@ -26,6 +26,10 @@ class Specialite
      */
     private $libelleSpecial;
 
+    /**
+     * @ORM\Column(type="string", length=512, nullable=true)
+     */
+    private $descriptionSpecial;
 
     /**
      * @return int
@@ -57,6 +61,22 @@ class Specialite
     public function setLibelleSpecial($libelleSpecial)
     {
         $this->libelleSpecial = $libelleSpecial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescriptionSpecial()
+    {
+        return $this->descriptionSpecial;
+    }
+
+    /**
+     * @param mixed $descriptionSpecial
+     */
+    public function setDescriptionSpecial($descriptionSpecial)
+    {
+        $this->descriptionSpecial = $descriptionSpecial;
     }
 
     public function __toString()

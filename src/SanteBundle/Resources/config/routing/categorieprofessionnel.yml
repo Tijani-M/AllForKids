@@ -1,0 +1,24 @@
+categorieprofessionnel_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:CategorieProfessionnel:index" }
+    methods:  GET
+
+categorieprofessionnel_show:
+    path:     /{idCateg}/show
+    defaults: { _controller: "SanteBundle:CategorieProfessionnel:show" }
+    methods:  GET
+
+categorieprofessionnel_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:CategorieProfessionnel:new" }
+    methods:  [GET, POST]
+
+categorieprofessionnel_edit:
+    path:     /{idCateg}/edit
+    defaults: { _controller: "SanteBundle:CategorieProfessionnel:edit" }
+    methods:  [GET, POST]
+
+categorieprofessionnel_delete:
+    path:     /{idCateg}/delete
+    defaults: { _controller: "SanteBundle:CategorieProfessionnel:delete" }
+    methods:  DELETE

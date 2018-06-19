@@ -1,0 +1,24 @@
+rdvsante_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:RDVSante:index" }
+    methods:  GET
+
+rdvsante_show:
+    path:     /{idRdv}/show
+    defaults: { _controller: "SanteBundle:RDVSante:show" }
+    methods:  GET
+
+rdvsante_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:RDVSante:new" }
+    methods:  [GET, POST]
+
+rdvsante_edit:
+    path:     /{idRdv}/edit
+    defaults: { _controller: "SanteBundle:RDVSante:edit" }
+    methods:  [GET, POST]
+
+rdvsante_delete:
+    path:     /{idRdv}/delete
+    defaults: { _controller: "SanteBundle:RDVSante:delete" }
+    methods:  DELETE

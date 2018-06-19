@@ -3,6 +3,11 @@ parascolaire_index:
     defaults: { _controller: "ScolariteBundle:Parascolaire:index" }
     methods:  GET
 
+parascolaire_validate:
+    path:     /valider/{id}
+    defaults: { _controller: "ScolariteBundle:Parascolaire:valider", id: "" }
+    methods:  GET
+
 parascolaire_index_json:
     path:     /json
     defaults: { _controller: "ScolariteBundle:Parascolaire:indexJson" }

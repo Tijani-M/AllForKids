@@ -1,0 +1,24 @@
+specialite_index:
+    path:     /
+    defaults: { _controller: "SanteBundle:Specialite:index" }
+    methods:  GET
+
+specialite_show:
+    path:     /{idSpecial}/show
+    defaults: { _controller: "SanteBundle:Specialite:show" }
+    methods:  GET
+
+specialite_new:
+    path:     /new
+    defaults: { _controller: "SanteBundle:Specialite:new" }
+    methods:  [GET, POST]
+
+specialite_edit:
+    path:     /{idSpecial}/edit
+    defaults: { _controller: "SanteBundle:Specialite:edit" }
+    methods:  [GET, POST]
+
+specialite_delete:
+    path:     /{idSpecial}/delete
+    defaults: { _controller: "SanteBundle:Specialite:delete" }
+    methods:  DELETE

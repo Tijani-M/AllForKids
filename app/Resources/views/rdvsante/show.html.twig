@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Rdvsante</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idrdv</th>
+                <td>{{ rDVSante.idRdv }}</td>
+            </tr>
+            <tr>
+                <th>Duree</th>
+                <td>{{ rDVSante.duree }}</td>
+            </tr>
+            <tr>
+                <th>Daterdv</th>
+                <td>{% if rDVSante.dateRDV %}{{ rDVSante.dateRDV|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Isvalidated</th>
+                <td>{% if rDVSante.isValidated %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('rdvsante_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('rdvsante_edit', { 'idRdv': rDVSante.idRdv }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -51,7 +51,9 @@
                         <td>{{ adresse.tel }}</td>
                         <td>{{ adresse.siteWeb }}</td>
                         <td>
-                            <a href="{{ path('adresseutile_edit', { 'id': adresse.id }) }}">modifier/supprimer</a>
+                            <a href="{{ path('adresseutile_edit', { 'id': adresse.id }) }}">
+                                <i class="fa fa-edit"></i><i class="fa fa-trash"></i> Modifier
+                            </a>
                         </td>
                     </tr>
                 {% endfor %}

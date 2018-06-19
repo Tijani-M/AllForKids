@@ -3,6 +3,7 @@
 namespace SanteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +15,9 @@ class LocaliteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelleLocalite')
-            ->add('codePostal')
-                ->add('gouvernorat');
+            ->add('libelleLocalite',TextType::class,array("label"=>"Libellé :"))
+            ->add('codePostal',TextType::class,array("label"=>"Code postal :"))
+            ->add('gouvernorat');
     }/**
      * {@inheritdoc}
      */

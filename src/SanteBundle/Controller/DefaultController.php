@@ -18,4 +18,10 @@ class DefaultController extends Controller
         return $this->render('SanteBundle:Default:index.html.twig', array('name' => 'nom'));
         #return new Response("Bonjour : ".$id);
     }
+
+    public function frontAction()
+    {
+        return $this->render('SanteBundle:Default:santeFront.html.twig');
+    }
+
 }

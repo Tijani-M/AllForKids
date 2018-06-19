@@ -3,6 +3,7 @@
 namespace SanteBundle\Controller;
 
 use SanteBundle\Entity\Gouvernorat;
+use SanteBundle\Form\GouvernoratType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,7 +35,8 @@ class GouvernoratController extends Controller
     public function newAction(Request $request)
     {
         $gouvernorat = new Gouvernorat();
-        $form = $this->createForm('SanteBundle\Form\GouvernoratType', $gouvernorat);
+        $form=$this->createForm(GouvernoratType::class,$gouvernorat);
+//        $form = $this->createForm('SanteBundle\Form\GouvernoratType', $gouvernorat);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

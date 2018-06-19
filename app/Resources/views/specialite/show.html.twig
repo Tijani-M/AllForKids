@@ -1,0 +1,44 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block body %}
+    <div class="title_left">
+        <h1 align="center">Gestion des Spécialités</h1>
+    </div>
+    <div class="x_panel" align="auto">
+        <div class="x_title">
+            <div class="clearfix">
+                <div>
+                    <h2 align="center"><u>Affichage spécialité</u> : {{ specialite.idSpecial }}</h2>
+                </div>
+                <ul class="nav navbar-right ">
+                    <a href="{{ path('specialite_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                    <a href="{{ path('specialite_edit',{ 'idSpecial': specialite.idSpecial }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Libellé</th>
+                        <td>{{ specialite.libelleSpecial }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ specialite.descriptionSpecial }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="x_panel" align="auto">
+        <div align="left">
+            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+        </div>
+        <div class="x_content">
+            <h2 align="center">Liste des Médecins dans cette spécialité</h2>
+            <span class="label label-success pull-right">En cours de développement</span>
+        </div>
+    </div>
+{% endblock %}

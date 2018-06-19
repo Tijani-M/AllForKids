@@ -68,6 +68,7 @@ class ParascolaireController extends Controller
     public function newAction(Request $request)
     {
         $parascolaire = new Parascolaire();
+        $parascolaire->setMembreProposant($this->getUser());
         $form = $this->createForm('ScolariteBundle\Form\ParascolaireType', $parascolaire);
         $form->handleRequest($request);
 
@@ -106,6 +107,29 @@ class ParascolaireController extends Controller
             "Parascolaires" => $parascolaires
         ));
     }
+
+    public function validerAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        if(!($id=="")){
+            $parascolaire = $em->getRepository('ScolariteBundle:Parascolaire')->find($id);
+            $parascolaire->setValide(true);
+            $parascolaire->setDateValidation(new \DateTime());
+            $parascolaire->setValidateur($this->getUser());
+
+            $em->persist($parascolaire);
+            $em->flush();
+            return $this->redirectToRoute('parascolaire_validate');
+        }
+        $user=$this->getUser();
+        $parascolaires = $em->getRepository('ScolariteBundle:Parascolaire')->chercherNonValide($user);
+
+        return $this->render('parascolaire/showNonValide.html.twig', array(
+            "parascolaires" => $parascolaires
+        ));
+    }
+
 
     /**
      * Finds and displays a parascolaire entity.

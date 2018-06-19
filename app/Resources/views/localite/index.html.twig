@@ -17,7 +17,17 @@
                     <a href="{{ path('localite_new') }}"><i class="fa fa-save"></i> Créer Localité</a>
                 </ul>
             </div>
-            <h4>     A ajouter un filtre par Gouvernorat</h4>
+            {#Filtre recherche par Gouvernorat#}
+<div align="center">
+            <form action="search" method="POST">
+                {{ form_start(form) }}
+                {{ form_widget(form.gouvernorat, {
+                    'attr': {'class':'dropdown-toggle'}
+                }) }}
+                <input class="btn btn-primary" type="submit" value="Rechercher"/>
+                {{ form_end(form) }}
+            </form>
+</div>
         </div>
         <div align="left">
             <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

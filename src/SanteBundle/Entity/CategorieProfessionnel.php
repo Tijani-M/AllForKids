@@ -65,6 +65,5 @@ class CategorieProfessionnel
         return $this->getLibelleCateg();
     }
 
-
 }
 

@@ -1,7 +1,11 @@
+{% extends 'front.html.twig' %}
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block slide %}
 {% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    <div class="alert alert-warning" align="center">
+        <h2>{{ error.messageKey|trans(error.messageData, 'security') }}</h2>
+    </div>
 {% endif %}
 
 {#<form action="{{ path("fos_user_security_check") }}" method="post" >
@@ -89,7 +93,7 @@
                             <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                         </div>
 {#fin ajout1 #}
-                        <a class="reset_pass" href="#" > {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }} ?</a>
+                        <a class="reset_pass" href="{{ path("fos_user_resetting_request") }}" > {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }} ?</a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -105,7 +109,7 @@
                         <div>
                             <img src="{{ asset('images/logo/Logo1.png') }} "  height="100">
 
-                            <p>©2018 All Rights Reserved. Team One</p>
+                            <p>©2018 All Rights Reserved. Team One / Esprit</p>
                         </div>
 
                 </form>
@@ -114,3 +118,5 @@
     </div>
 
 <body/>
+
+{% endblock %}

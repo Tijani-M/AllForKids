@@ -1,0 +1,171 @@
+{% extends 'front.html.twig' %}
+
+{% block slide %}
+
+<html>
+<head>
+    <title>All For Kids | Créer un compte</title>
+    <!-- Bootstrap -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css') }}"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css') }}"
+          rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css') }}" rel="stylesheet">
+    <style>
+        #test {
+            width: 50%;
+            margin: auto;
+            margin-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<!-- page content -->
+<div class="row" id="test">
+
+    <div class="x_panel">
+        {{ form_start(form, {'method': 'post', 'action': path('professionnelsante_new'), 'attr': {'class': 'professionnelsante_new form-horizontal form-label-left'}}) }}
+        <span class="section">Créer un compte Professionnel</span>
+
+        <div class="item form-group">
+            {{ form_label(form.username, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.username, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre nom Professionnel"}
+            }) }}
+            <small>{{ form_errors(form.username) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.email, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.email, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre adresse mail"}
+            }) }}
+            <small>{{ form_errors(form.email) }}</small>
+        </div>
+
+        {% for passwordField in form.plainPassword %}
+            <div class="item form-group">
+                {{ form_label(passwordField, null, {
+                    'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+                }) }}
+                {{ form_widget(passwordField, {
+                    'attr': {'class': "cform-control col-md-5 col-xs-12 required",'placeholder': "Indiquer votre mot de passe"}
+                }) }}
+            </div>
+        {% endfor %}
+
+        <div class="item form-group">
+            {{ form_label(form.telephone, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.telephone, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.telephone) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.adresse, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.adresse, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.adresse) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.localite, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.localite, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.localite) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.gouvernorat, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.gouvernorat, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.gouvernorat) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.gps, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.gps, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.gps) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.CategorieProfessionnel, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.CategorieProfessionnel, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.CategorieProfessionnel) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.Specialite, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.Specialite, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.Specialite) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.Convention, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.Convention, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.Convention) }}</small>
+        </div>
+
+        <div class="item form-group">
+            {{ form_label(form.tarif, null, {
+                'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+            }) }}
+            {{ form_widget(form.tarif, {
+                'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+            }) }}
+            <small>{{ form_errors(form.tarif) }}</small>
+        </div>
+
+        <div class="ln_solid"></div>
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-3">
+                <input class="btn btn-success" type="submit" value="Créer un compte"/>
+                <a href="{{ path('scolarite_homepage') }}" class="btn btn-warning" role="button" >Annuler</a>
+            </div>
+        </div>
+
+
+    {{ form_end(form) }}
+
+
+    </div>
+</div>
+<!-- /page content -->
+</body>
+
+</html>
+{% endblock %}

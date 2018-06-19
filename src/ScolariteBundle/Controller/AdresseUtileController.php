@@ -5,6 +5,7 @@ namespace ScolariteBundle\Controller;
 use ScolariteBundle\Entity\AdresseUtile;
 use ScolariteBundle\Entity\CategorieLieu;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use ScolariteBundle\Form\AdresseUtileSearchType;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
@@ -42,8 +43,8 @@ class AdresseUtileController extends Controller
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
-        $serializer=new Serializer([ $normalizer]);
-        $formatted=$serializer->normalize($adresseUtiles);
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($adresseUtiles);
         return $this->json($formatted);
 
     }
@@ -58,10 +59,33 @@ class AdresseUtileController extends Controller
         $normalizer->setCircularReferenceHandler(function ($object) {
             return $object->getId();
         });
-        $serializer=new Serializer([ $normalizer]);
-        $formatted=$serializer->normalize($adresseUtile);
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($adresseUtile);
         return $this->json($formatted);
 
+    }
+
+    public function newJsonAction(Request $request)
+    {
+        $adresseUtile = new Adresseutile();
+        $adresseUtile->setValide(false);
+        $adresseUtile->setDateAjout(new \DateTime());
+        $adresseUtile->setNom($request->get("nom"));
+        $adresseUtile->setAdresse($request->get("adresse"));
+        $adresseUtile->setDescription($request->get("description"));
+        $adresseUtile->setTel($request->get("tel"));
+        $adresseUtile->setSiteWeb($request->get("site"));
+        $adresseUtile->setGps($request->get("gps"));
+
+        $em = $this->getDoctrine()->getManager();
+        try{
+            $em->persist($adresseUtile);
+            $em->flush();
+            return new JsonResponse("Succes");
+        }
+        catch (\Exception $exception){
+            return new JsonResponse($exception->getMessage());
+        }
     }
 
     public function mapAction()
@@ -74,6 +98,7 @@ class AdresseUtileController extends Controller
             'adresseUtiles' => $adresseUtiles,
         ));
     }
+
     public function searchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
