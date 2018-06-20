@@ -48,12 +48,12 @@
                     </div>
                     <div class="content_part">
                         <ul class="listing">
-                            <li><i class="fa fa-clock-o"></i> {{ professionnelSante.adresse }}</li>
-                            <li><i class="fa fa-flask"></i> {{ professionnelSante.localite }}</li>
-                            <li><i class="fa fa-star"></i> {{ professionnelSante.gouvernorat }}</li>
-                            <li><i class="fa fa-heart"></i> {{ professionnelSante.telephone }}</li>
+                            <li><i class="fa fa-map-o"></i> {{ professionnelSante.adresse }}</li>
+                            <li><i class="fa fa-map-marker"></i> {{ professionnelSante.localite }}</li>
+                            <li><i class="fa fa-map"></i> {{ professionnelSante.gouvernorat }}</li>
+                            <li><i class="fa fa-mobile"></i> {{ professionnelSante.telephone }}</li>
                         </ul>
-                        <p>{{ professionnelSante.email }}</p>
+                        <p><i class="fa fa-mail-forward"></i> {{ professionnelSante.email }}</p>
                     </div>
                     <div class="button_part"><a href="{{ path('professionnelsante_edit', { 'idPro': professionnelSante.idPro }) }}" class="cws_button button_text pricing_table_button">Prendre RDV</a></div>
                     </div>
