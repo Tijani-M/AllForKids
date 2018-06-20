@@ -16,7 +16,7 @@ class RDVSanteType extends AbstractType
         $builder
             ->add('duree')
             ->add('dateRDV')
-            ->add('isValidated')
+//            ->add('isValidated')
             ->add('professionnel')
             ->add('patient');
     }/**

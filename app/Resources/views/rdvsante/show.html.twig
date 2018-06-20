@@ -1,40 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block body %}
-    <h1>Rdvsante</h1>
 
-    <table>
+    <div class="title_left">
+        <h1 align="center">Liste des Rendez-Vous Santé</h1>
+    </div>
+<div class="x_panel" align="auto">
+    <div class="x_title">
+        <div class="clearfix">
+            <div>
+
+                <h2 align="center"><u>Affichage Rendez vous</u> : {{ rDVSante.idRdv}}</h2>
+            </div>
+            <ul class="nav navbar-right ">
+                <a href="{{ path('rdvsante_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                <a href="{{ path('rdvsante_edit',{ 'idRdv': rDVSante.idRdv }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+            </ul>
+        </div>
+    </div>
+    <table class="table table-bordered">
+
         <tbody>
             <tr>
-                <th>Idrdv</th>
-                <td>{{ rDVSante.idRdv }}</td>
+                <th>Nom Professionel</th>
+                <td>{{ rDVSante.professionnel }}</td>
             </tr>
             <tr>
-                <th>Duree</th>
+                <th>Nom Patient</th>
+            <td>{{ rDVSante.patient }}</td>
+            </tr>
+            <tr>
+                <th>Durée</th>
                 <td>{{ rDVSante.duree }}</td>
             </tr>
             <tr>
-                <th>Daterdv</th>
+                <th>Date Rendez Vous</th>
                 <td>{% if rDVSante.dateRDV %}{{ rDVSante.dateRDV|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Isvalidated</th>
-                <td>{% if rDVSante.isValidated %}Yes{% else %}No{% endif %}</td>
+                <th>Confirmé</th>
+                <td>{% if rDVSante.isValidated %}Oui{% else %}Non{% endif %}</td>
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('rdvsante_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('rdvsante_edit', { 'idRdv': rDVSante.idRdv }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+</div>
 {% endblock %}

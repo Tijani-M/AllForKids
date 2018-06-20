@@ -1,14 +1,27 @@
-{% extends 'front.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
-{% block front %}
-    <h1>Professionnelsante</h1>
+{% block body %}
 
-    <table>
+    <div class="title_left">
+        <h1 align="center">Liste des Professionnels Santé</h1>
+    </div>
+
+    <div class="x_panel" align="auto">
+        <div class="x_title">
+            <div class="clearfix">
+                <div>
+                    <h2 align="center"><u>Affichage Professionnel</u> : {{ professionnelSante.idPro }}</h2>
+                </div>
+            <ul class="nav navbar-right ">
+                <a href="{{ path('professionnelsante_index') }}"><i class="fa fa-reply"></i> Retour à la liste</a></br>
+                <a href="{{ path('professionnelsante_edit',{ 'idPro': professionnelSante.idPro }) }}"><i class="fa fa-edit"></i> Modifier</a></br>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <table class="table table-bordered">
+
         <tbody>
-            <tr>
-                <th>Idpro</th>
-                <td>{{ professionnelSante.idPro }}</td>
-            </tr>
             <tr>
                 <th>Telephone</th>
                 <td>{{ professionnelSante.telephone }}</td>
@@ -27,18 +40,6 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('professionnelsante_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('professionnelsante_edit', { 'idPro': professionnelSante.idPro }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    </div>
+    </div>
 {% endblock %}

@@ -27,6 +27,17 @@ class ListeAppelUrgenceController extends Controller
         ));
     }
 
+    public function consultListAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $listeAppelUrgences = $em->getRepository('SanteBundle:ListeAppelUrgence')->findAll();
+
+        return $this->render('listeappelurgence/consultList.html.twig', array(
+            'listeAppelUrgences' => $listeAppelUrgences,
+        ));
+    }
+
     /**
      * Creates a new listeAppelUrgence entity.
      *

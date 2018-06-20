@@ -3,6 +3,11 @@ listeappelurgence_index:
     defaults: { _controller: "SanteBundle:ListeAppelUrgence:index" }
     methods:  GET
 
+listeappelurgence_consultList:
+    path:     /consultList
+    defaults: { _controller: "SanteBundle:ListeAppelUrgence:consultList" }
+    methods:  GET
+
 listeappelurgence_show:
     path:     /{idNumUrgence}/show
     defaults: { _controller: "SanteBundle:ListeAppelUrgence:show" }

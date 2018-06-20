@@ -3,6 +3,11 @@ rdvsante_index:
     defaults: { _controller: "SanteBundle:RDVSante:index" }
     methods:  GET
 
+rdvsante_consultList:
+    path:     /consultList
+    defaults: { _controller: "SanteBundle:RDVSante:consultList" }
+    methods:  GET
+
 rdvsante_show:
     path:     /{idRdv}/show
     defaults: { _controller: "SanteBundle:RDVSante:show" }

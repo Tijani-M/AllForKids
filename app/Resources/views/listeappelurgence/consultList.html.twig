@@ -1,0 +1,49 @@
+{% extends 'front.html.twig' %}
+
+{% block front %}
+
+    <body id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1>Liste des Numéros Appel d'Urgence</h1>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+
+    <div class="bg-level-2-full-width-container kids_bottom_content">
+        <div class="bg-level-2-page-width-container no-padding">
+            <section class="kids_bottom_content_container">
+                <!-- ***************** - START Image floating - *************** -->
+                <div class="page-content">
+                    <div class="container l-page-width">
+                        <div class="entry-container ">
+                            <main>
+                                {% for listeAppelUrgence in listeAppelUrgences %}
+                                    <section>
+                                        <div class="grid-col">
+                                            <div class="profile_pic">
+                                                <h1 align="center"><strong>{{ listeAppelUrgence.NumUrgence }}</strong>
+                                                </h1>
+                                                <img src="{{ asset('images/urgence/') }}{{ listeAppelUrgence.image }}"
+                                                     class="img-circle profile_img">
+                                                <h3 align="center">{{ listeAppelUrgence.libelleNumUrgence }}</h3>
+                                            </div>
+                                        </div>
+                                    </section>
+                                {% endfor %}
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- .bottom_content_container -->
+    </div>
+    </body>
+
+{% endblock %}

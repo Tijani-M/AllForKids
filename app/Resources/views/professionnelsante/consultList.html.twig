@@ -1,0 +1,110 @@
+{% extends 'front.html.twig' %}
+
+{% block front %}
+
+    {#<div class="title_left">#}
+        {#<h1 align="center">Liste des Professionnels Santé</h1>#}
+    {#</div>#}
+
+    {#<div class="x_panel" align="auto">#}
+
+        {#<div align="left">#}
+            {#<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>#}
+        {#</div>#}
+        {#<div class="x_content">#}
+
+<!--###########################################################################################-->
+<body id="kids_middle_container">
+    <!-- .content -->
+    <div class="kids_top_content">
+        <div class="kids_top_content_middle ">
+            <div class="header_container ">
+                <div class="l-page-width">
+                    <h1>Liste des Professionnels Santé</h1>
+                </div>
+            </div>
+        </div>
+        <!-- .kids_top_content_middle -->
+    </div>
+
+<div class="bg-level-2-full-width-container kids_bottom_content">
+    <div class="bg-level-2-page-width-container no-padding">
+        <section class="kids_bottom_content_container">
+            <!-- ***************** - START Image floating - *************** -->
+            <div class="page-content">
+                <div class="container l-page-width">
+                    <div class="entry-container ">
+                        <main>
+
+    {#<div class='pricing_table_header'>#}
+            {% for professionnelSante in professionnelSantes %}
+
+                <section>
+                    <div class="grid-col pricing_table_column grid-col-3">
+                        <div class="title"><strong>{{ professionnelSante.username }}</strong></div>
+                        <div class="encouragement">{{ professionnelSante.specialite }}</div>
+
+                    <div class="price_part"><span class="price_container"><span class="currency"> D.T</span><span class="price">{{ professionnelSante.tarif }}</span><span class="price_description">{{ professionnelSante.Convention }}</span></span>
+                    </div>
+                    <div class="content_part">
+                        <ul class="listing">
+                            <li><i class="fa fa-clock-o"></i> {{ professionnelSante.adresse }}</li>
+                            <li><i class="fa fa-flask"></i> {{ professionnelSante.localite }}</li>
+                            <li><i class="fa fa-star"></i> {{ professionnelSante.gouvernorat }}</li>
+                            <li><i class="fa fa-heart"></i> {{ professionnelSante.telephone }}</li>
+                        </ul>
+                        <p>{{ professionnelSante.email }}</p>
+                    </div>
+                    <div class="button_part"><a href="{{ path('professionnelsante_edit', { 'idPro': professionnelSante.idPro }) }}" class="cws_button button_text pricing_table_button">Prendre RDV</a></div>
+                    </div>
+                </section>
+            {% endfor %}
+        {#</div>#}
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- .bottom_content_container -->
+</div>
+</body>
+<!--###############################################################################################-->
+
+
+            {#<table id="datatable" class="table table-striped table-bordered">#}
+                {#<thead>#}
+                {#<tr>#}
+                    {#<th>#</th>#}
+                    {#<th>Nom</th>#}
+                    {#<th>Localité</th>#}
+                    {#<th>Adresse</th>#}
+                    {#<th>Téléphone</th>#}
+                    {#<th>Email</th>#}
+                    {#<th>Tarif</th>#}
+                    {#<th>Convention</th>#}
+                    {#<th>Actions</th>#}
+                {#</thead>#}
+                {#<tbody>#}
+                {#{% for professionnelSante in professionnelSantes %}#}
+                    {#<tr>#}
+                        {#<td><a href="{{ path('professionnelsante_show', { 'idPro': professionnelSante.idPro }) }}"><i class="fa fa-eye"></i> <u>{{ professionnelSante.idPro }}</u></a></td>#}
+                        {#<td>{{ professionnelSante.username }}</td>#}
+                        {#<td>{{ professionnelSante.localite }}</td>#}
+                        {#<td>{{ professionnelSante.adresse }}</td>#}
+                        {#<td>{{ professionnelSante.telephone }}</td>#}
+                        {#<td>{{ professionnelSante.email }}</td>#}
+                        {#<td>{{ professionnelSante.tarif }} D.T</td>#}
+                        {#<td>{{ professionnelSante.Convention }}</td>#}
+                        {#<td>#}
+                                    {#<a href="{{ path('professionnelsante_edit', { 'idPro': professionnelSante.idPro }) }}"><i class="fa fa-edit"></i> Modifier#}
+                                        {#</br><i class="fa fa-trash"></i> Supprimer</a>#}
+                        {#</td>#}
+                    {#</tr>#}
+                {#{% endfor %}#}
+                {#</tbody>#}
+            {#</table>#}
+        {#</div>#}
+    {#</div>#}
+    {#</div>#}
+{% endblock %}

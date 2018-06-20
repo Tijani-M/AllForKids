@@ -27,6 +27,17 @@ class ProfessionnelSanteController extends Controller
         ));
     }
 
+    public function consultListAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $professionnelSantes = $em->getRepository('SanteBundle:ProfessionnelSante')->findAll();
+
+        return $this->render('professionnelsante/consultList.html.twig', array(
+            'professionnelSantes' => $professionnelSantes,
+        ));
+    }
+
     /**
      * Creates a new professionnelSante entity.
      *

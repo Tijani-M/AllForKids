@@ -2,11 +2,59 @@
 
 {% block front %}
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <h1 align="center">Intégration métier Santé, réservation RDV en cours construction</h1>
+
+    <div id="kids_middle_container">
+        {#<!-- .content -->#}
+        <div class="kids_top_content">
+            <div class="kids_top_content_middle homepage">
+                <div class="l-page-width">
+                    <section class="kids_posts_container clearfix">
+                        <div class="widget_wrapper">
+                            <div id="cws_benefits-5" class="widget widget_cws_benefits">
+                                <div class="widget-icon pic">
+                                    <img src={{ asset('bundles/TemplateFront/images/icon-2.png') }} alt />
+                                </div>
+                                <div class="cws-widget-content benefits_widget">
+                                    <h3 class="widget-title">Liste Numéros d'Urgence</h3>
+                                    <section class="text_part">Consultez la liste des numéros d'Urgence</section>
+                                    <a href="{{ path('listeappelurgence_consultList') }}" class='cws_button' >Consultez</a>
+                                </div>
+                            </div>
+                            <div id="cws_benefits-2" class="widget widget_cws_benefits">
+                                <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-3.png') }} alt />
+                                </div>
+                                <div class="cws-widget-content benefits_widget">
+                                    <h3 class="widget-title">Professionnels Santé</h3>
+                                    <section class="text_part">Vous cherchez un Médecin, une infirmerie, un clinique.<br>
+                                        Vous êtes à la bonne adresse.<br>
+                                        Vous pouvez lancer votre recherche par ici</section>
+                                    <a href="{{ path('professionnelsante_consultList') }}" class='cws_button'>Recherchez</a>
+                                </div>
+                            </div>
+                            <div id="cws_benefits-3" class="widget widget_cws_benefits">
+                                <div class="widget-icon pic"><img src={{ asset('bundles/TemplateFront/images/icon-1.png') }} alt />
+                                </div>
+                                <div class="cws-widget-content benefits_widget">
+                                    <h3 class="widget-title">Information Santé</h3>
+                                    <section class="text_part">Trouvez des informations utiles concernant la santé de votre enfant</section>
+                                    <a href='#' class='cws_button '>Consultez</a>
+                                    <span class="label label-success pull-right">Developpement En cours</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="bottom-border"></div>
+            </div>
+            {#<!-- .kids_top_content_middle -->#}
+        </div>
+    </div>
+
+    {#<h1 align="center">Intégration métier Santé, réservation RDV en cours construction</h1>#}
     {% else %}
-        <h4 align="center"> Veuillez vous connecter</br>
+        <h2 align="center"> Veuillez vous connecter</br>
     <a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-        </h4>
+        </h2>
 {% endif %}
 {% endblock %}
 

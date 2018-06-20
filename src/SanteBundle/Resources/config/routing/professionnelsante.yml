@@ -3,6 +3,11 @@ professionnelsante_index:
     defaults: { _controller: "SanteBundle:ProfessionnelSante:index" }
     methods:  GET
 
+professionnelsante_consultList:
+    path:     /consultList
+    defaults: { _controller: "SanteBundle:ProfessionnelSante:consultList" }
+    methods:  GET
+
 professionnelsante_show:
     path:     /{idPro}/show
     defaults: { _controller: "SanteBundle:ProfessionnelSante:show" }

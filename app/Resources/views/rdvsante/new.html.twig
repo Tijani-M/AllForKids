@@ -1,16 +1,101 @@
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
 
-{% block body %}
-    <h1>Rdvsante creation</h1>
+{% block front %}
+     {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
+    <html>
+    <head>
+        <title>All For Kids | Créer un compte</title>
+        <!-- Bootstrap -->
+        <link href="{{ asset('bundles/dashboard/gentelella/../vendors/bootstrap/dist/css/bootstrap.min.css') }}"
+              rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{{ asset('bundles/dashboard/gentelella/../vendors/font-awesome/css/font-awesome.min.css') }}"
+              rel="stylesheet">
+        <!-- Custom Theme Style -->
+        <link href="{{ asset('bundles/dashboard/gentelella/../build/css/custom.min.css') }}" rel="stylesheet">
+        <style>
+            #test {
+                width: 50%;
+                margin: auto;
+                margin-top: 10%;
+            }
+        </style>
+    </head>
+    <body>
+<div class="row" id="test">
+<div class="x_panel">
+    {{ form_start(form, {'method': 'post', 'action': path('rdvsante_new'), 'attr': {'class': 'rdvsante_new form-horizontal form-label-left'}}) }}
+    <span class="section">Nouveau Rendez-Vous</span>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+    <div class="item form-group">
+        {{ form_label(form.professionnel, null, {
+            'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+        }) }}
+        {{ form_widget(form.professionnel, {
+            'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+        }) }}
+        <small>{{ form_errors(form.professionnel) }}</small>
+    </div>
+
+    <div class="item form-group">
+        {{ form_label(form.patient, null, {
+            'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+        }) }}
+        {{ form_widget(form.patient, {
+            'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+        }) }}
+        <small>{{ form_errors(form.patient) }}</small>
+    </div>
+
+    <div class="item form-group">
+        {{ form_label(form.dateRDV, null, {
+            'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+        }) }}
+        {{ form_widget(form.dateRDV, {
+            'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+        }) }}
+        <small>{{ form_errors(form.dateRDV) }}</small>
+    </div>
+
+    <div class="item form-group">
+        {{ form_label(form.duree, null, {
+            'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12 required'}
+        }) }}
+        {{ form_widget(form.duree, {
+            'attr': {'class': "cform-control col-md-5 col-xs-12 required"}
+        }) }}
+        <small>{{ form_errors(form.duree) }}</small>
+    </div>
+
+    {#<div class="item form-group">#}
+        {#{{ form_label(form.isValidated, null, {#}
+            {#'label_attr': {'class': 'control-label col-md-4 col-sm-3 col-xs-12'}#}
+        {#}) }}#}
+        {#{{ form_widget(form.isValidated, {#}
+            {#'attr': {'class': "cform-control col-md-5 col-xs-12"}#}
+        {#}) }}#}
+        {#<small>{{ form_errors(form.isValidated) }}</small>#}
+    {#</div>#}
+
+    <div class="ln_solid"></div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-3">
+            <input class="btn btn-success" type="submit" value="Créer un compte"/>
+            <a href="{{ path('scolarite_homepage') }}" class="btn btn-warning" role="button" >Annuler</a>
+        </div>
+    </div>
+
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('rdvsante_index') }}">Back to the list</a>
-        </li>
-    </ul>
+</div>
+</div>
+    {#{% else %}#}
+    {#<h3 align="center">Veuillez vous connecter,</h3>#}
+    {#<h4 align="center">#}
+        {#<a href="{{ path('fos_user_security_login') }}" align="center">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
+    {#</h4>#}
+    {#{% endif %}#}
+    </body>
+
+    </html>
 {% endblock %}

@@ -27,6 +27,17 @@ class RDVSanteController extends Controller
         ));
     }
 
+    public function consultListAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $rDVSantes = $em->getRepository('SanteBundle:RDVSante')->findAll();
+
+        return $this->render('rdvsante/consultList.html.twig', array(
+            'rDVSantes' => $rDVSantes,
+        ));
+    }
+
     /**
      * Creates a new rDVSante entity.
      *
@@ -42,7 +53,7 @@ class RDVSanteController extends Controller
             $em->persist($rDVSante);
             $em->flush();
 
-            return $this->redirectToRoute('rdvsante_show', array('idRdv' => $rDVSante->getIdrdv()));
+            return $this->redirectToRoute('rdvsante_consultList', array('idRdv' => $rDVSante->getIdrdv()));
         }
 
         return $this->render('rdvsante/new.html.twig', array(
@@ -78,7 +89,7 @@ class RDVSanteController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('rdvsante_edit', array('idRdv' => $rDVSante->getIdrdv()));
+            return $this->redirectToRoute('rdvsante_index', array('idRdv' => $rDVSante->getIdrdv()));
         }
 
         return $this->render('rdvsante/edit.html.twig', array(
